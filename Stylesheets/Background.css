@@ -1,0 +1,152 @@
+html{
+  height: 100%;
+}
+
+body{
+  background: linear-gradient(45deg, #FF70AC 0%, #AC9EFF 60%, #99DAFF 100%);
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+#Title{
+  position: absolute;
+  top: 6vh;
+  width: 100vw; 
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: min(8vw,8vh);
+  color: white;
+  text-align: center;
+  left: calc(50% - 50vw);
+  z-index: 1;
+}
+
+.Bubbles{
+  position: absolute;
+  background: rgba(255,255,255,0.1);  
+  box-shadow: inset 1px 1px 0px 0px rgba(255,255,255,0.7), inset 4px 4px 12px 0px rgba(255,255,255,0.5);
+}
+
+.Bubbles:nth-child(1){
+  height: 15vw;
+  width: 15vw;
+  border-radius: 7.5vw;
+  top: calc(20% - 7.5vw);
+  left: calc(22% - 7.5vw);
+}
+
+.Bubbles:nth-child(2){
+  height: 20vw;
+  width: 20vw;
+  border-radius: 10vw;
+  top: calc(75% - 10vw);
+  left: calc(15% - 10vw);
+}
+
+.Bubbles:nth-child(3){
+  height: 12vw;
+  width: 12vw;
+  border-radius: 6vw;
+  top: calc(67% - 6vw);
+  left: calc(55% - 6vw);
+}
+
+.Bubbles:nth-child(4){
+  height: 28vw;
+  width: 28vw;
+  border-radius: 14vw;
+  top: calc(24% - 14vw);
+  left: calc(78% - 14vw);
+}
+
+#Playing_Surface{
+  position: absolute;
+  height: min(80vh,80vw);
+  width: min(80vh,80vw);
+  border-radius: min(3vh,3vw);
+  top: calc(55% - 1*min(40vh,40vw));
+  left: calc(50% - 1*min(40vh,40vw));
+  background-color: rgba(0,0,0,0.2);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(6px);
+  box-shadow: inset 1px 1px 0px 0px rgba(255,255,255,0.7), 15px 15px 20px 0px rgba(0,0,0,0.25);
+}
+
+#Boxes_Wrapper{
+  position: absolute;
+  display: grid;
+  grid-gap: 2px;
+  grid-template-columns: repeat(9,1fr);
+  grid-template-rows: repeat(9,1fr);
+  height: 85%;
+  width: 85%;  
+  top: calc(50% - 42.5%);
+  left: calc(50% - 42.5%);
+}
+
+.Boxes{
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.Pink_Box{
+  background-color: rgba(246,75,120,1);
+}
+
+.Blue_Box{
+  background-color: rgba(134,110,240,1);
+}
+
+#Dots_Wrapper{
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(10,1fr);
+  grid-template-rows: repeat(10,1fr);
+  height: 95%;
+  width: 95%;
+  top: calc(50% - 47.5%);
+  left: calc(50% - 47.5%);
+  z-index: 10;
+}
+
+.Dots{
+  position: relative;
+  height: 20%;
+  width: 20%;
+  top: calc(50% - 10% - min(0.25vh,0.25vw));
+  left: calc(50% - 10% - min(0.25vh,0.25vw));
+  background-color: rgba(255,255,255,1);
+  border-radius: 100%;
+  border: min(0.5vh,0.5vw) solid rgba(200,200,200,0.5);
+  box-shadow: 4px 4px 7px 0px rgba(0,0,0,0.1);
+  transition: transform 0.1s;
+  z-index: 10;
+  transition: transform 0.1s;
+}
+
+.Dots:hover{
+  /* background-color: rgba(246,73,160,1); */
+}
+
+#Lines_Wrapper{
+  height: 100%;
+  width: 100%;
+  border-radius: min(3vh,3vw);
+}
+
+#Active_Line{
+  position: absolute;
+  background-color: rgba(255,255,255,0);
+  height: min(2.8vw,2.8vh);
+  width: min(2.8vw,2.8vh);
+  margin-top: min(0vw,0vh);
+  margin-left: min(0vw,0vh);
+  border-radius: min(1.4vw,1.4vh);
+  transform-origin: top center;
+  z-index: -1;
+}
+
+
+
+
