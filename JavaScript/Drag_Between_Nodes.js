@@ -22,17 +22,24 @@ var Line_Length;
 var Direction;
 
 function Node_Entered(){
+  if (typeof this.className !== 'undefined'){
   var Node = document.getElementsByClassName(this.className)[0];
   Node.style.transform = "scale(1.75)";
 }
+}
 
 function Node_Left(){
-  var Node = document.getElementsByClassName("Dots " + Starting_Node)[0];
-  Node.style.transform = "scale(1)";
+  if (typeof Starting_Node !== 'undefined'){
+    var Node = document.getElementsByClassName("Dots " + Starting_Node)[0];
+    Node.style.transform = "scale(1)";
+  }
 }
 
 function Start_Node(){
-  Start_Node = "";
+  var Focus_Line = document.getElementById('Active_Line');
+  Focus_Line.classList.remove('Confirm_Animation');
+  Focus_Line.style.opacity = 1;
+  Starting_Node = "";
   Ending_Node = "";
   Start_Top_Position = "";
   Start_Left_Position = "";
@@ -170,24 +177,28 @@ function Get_Direction(Mouse_Top_Position,Start_Top_Position,Mouse_Left_Position
   var Bounding_Box = document.getElementById('Dots_Wrapper').getBoundingClientRect();
   var North_Vertical_Position = North_Node.getBoundingClientRect().top - Bounding_Box.top;
   var North_Horizontal_Position = North_Node.getBoundingClientRect().left - Bounding_Box.left;
+  North_Node.style.backgroundColor = "rgba(255,255,255,1)";
   }
   if((Row_Start+1) >= 1 & (Row_Start+1) <= 10){
   var South_Node_Class = "Dots " + String(Row_Start+1) + "_" + String(Column_Start);
   var South_Node = document.getElementsByClassName(South_Node_Class)[0];
   var South_Vertical_Position = South_Node.getBoundingClientRect().top - Bounding_Box.top;
   var South_Horizontal_Position = South_Node.getBoundingClientRect().left - Bounding_Box.left;
+  South_Node.style.backgroundColor = "rgba(255,255,255,1)";
   }
   if((Column_Start-1) >= 1 & (Column_Start-1) <= 10){
   var West_Node_Class = "Dots " + String(Row_Start) + "_" + String(Column_Start-1);
   var West_Node = document.getElementsByClassName(West_Node_Class)[0];
   var West_Vertical_Position = West_Node.getBoundingClientRect().top - Bounding_Box.top;
   var West_Horizontal_Position = West_Node.getBoundingClientRect().left - Bounding_Box.left;
+  West_Node.style.backgroundColor = "rgba(255,255,255,1)";
   }
   if((Column_Start+1) >= 1 & (Column_Start+1) <= 10){
   var East_Node_Class = "Dots " + String(Row_Start) + "_" + String(Column_Start+1);
   var East_Node = document.getElementsByClassName(East_Node_Class)[0];
   var East_Vertical_Position = East_Node.getBoundingClientRect().top - Bounding_Box.top;
   var East_Horizontal_Position = East_Node.getBoundingClientRect().left - Bounding_Box.left;
+  East_Node.style.backgroundColor = "rgba(255,255,255,1)";
   }
   var North_Node_Displacement = Math.sqrt(Math.pow((Mouse_Left_Position-North_Horizontal_Position),2) + Math.pow((Mouse_Top_Position-North_Vertical_Position),2));
   var South_Node_Displacement = Math.sqrt(Math.pow((Mouse_Left_Position-South_Horizontal_Position),2) + Math.pow((Mouse_Top_Position-South_Vertical_Position),2));
@@ -198,6 +209,7 @@ function Get_Direction(Mouse_Top_Position,Start_Top_Position,Mouse_Left_Position
   // var Minimum_Value = Filtered_Displacement_Array.sort()[0];
   // var Minimum_Index = Displacement_Array.indexOf(Math.min(Minimum_Value));  
   var Compass_Conversion = {0: "North",1: "South",2: "West",3: "East"};
+  
   if(Mouse_Top_Position >= Start_Top_Position & !isNaN(Displacement_Array[1])){
      Direction = "South";
   }
@@ -210,12 +222,37 @@ function Get_Direction(Mouse_Top_Position,Start_Top_Position,Mouse_Left_Position
   if(Mouse_Left_Position - Start_Left_Position < -Gap*0.9 & !isNaN(Displacement_Array[2])){
     Direction = "West";
   }    
+  var Line_Colour = document.getElementById('Active_Line').style.backgroundColor;
+  if(Direction == "South"){
+    var Tolerance = 0.6*Gap;
+    if(Math.abs(Line_Length) > Tolerance){
+      South_Node.style.backgroundColor = String(Line_Colour);
+    }
+  }
+  if(Direction == "North"){
+    var Tolerance = 0.6*Gap;
+    if(Math.abs(Line_Length) > Tolerance){
+      North_Node.style.backgroundColor = String(Line_Colour);
+    }
+  }
+  if(Direction == "West"){
+    var Tolerance = 0.6*Gap;
+    if(Math.abs(Line_Length) > Tolerance){
+      West_Node.style.backgroundColor = String(Line_Colour);
+    }
+  }
+  if(Direction == "East"){
+    var Tolerance = 0.6*Gap;
+    if(Math.abs(Line_Length) > Tolerance){
+      East_Node.style.backgroundColor = String(Line_Colour);
+    }
+  }  
   return Direction;
 }
 
 function Snap_To_End_Node(){
   var Playing_Surface_Bounding_Box = document.getElementById('Dots_Wrapper').getBoundingClientRect();
-  var Parent_Width = Playing_Surface_Bounding_Box.right - Parent_Bounds.left;  
+  var Parent_Width = Playing_Surface_Bounding_Box.right - Playing_Surface_Bounding_Box.left;  
   var Node_Left_Position = document.getElementsByClassName("Dots 1_1")[0].getBoundingClientRect().left;
   var Node_Right_Position = document.getElementsByClassName("Dots 1_2" )[0].getBoundingClientRect().left;
   var Node_Width = document.getElementsByClassName("Dots 1_2" )[0].getBoundingClientRect().width;
@@ -283,14 +320,12 @@ function Validate_Selected_Nodes(Node_1,Node_2){
 }
 }
 
-
-
-
-
 function Animate_Snap(){
   console.log("Snap");
-
-  
+  var Focus_Line = document.getElementById('Active_Line');
+  Focus_Line.classList.add('Confirm_Animation');
+  var Previous_Ending_Node = document.getElementsByClassName('Dots ' + Ending_Node)[0];
+  Previous_Ending_Node.style.backgroundColor = "rgba(255,255,255,1)";
 }
 
 function Animate_Fling_Back(){
@@ -299,10 +334,39 @@ function Animate_Fling_Back(){
   Focus_Line.style.backgroundColor = "rgba(255,255,255,0)";
   Focus_Line.style.height = "min(2.8vw,2.8vh)";
   Focus_Line.style.width = "min(2.8vw,2.8vh)";
-  
 }
 
-
+function Node_Highlight_Confirmation(Direction,North_Node,South_Node,West_Node,East_Node){
+  var Line_Colour = document.getElementById('Active_Line').style.backgroundColor;
+  North_Node.style.backgroundColor = "rgba(255,255,255,1)";
+  South_Node.style.backgroundColor = "rgba(255,255,255,1)";
+  West_Node.style.backgroundColor = "rgba(255,255,255,1)";
+  East_Node.style.backgroundColor = "rgba(255,255,255,1)";
+  if(Direction == "South"){
+    var Tolerance = 0.6*Gap;
+    if(Math.abs(Line_Length) > Tolerance){
+      South_Node.style.backgroundColor = String(Line_Colour);
+    }
+  }
+  if(Direction == "North"){
+    var Tolerance = 0.6*Gap;
+    if(Math.abs(Line_Length) > Tolerance){
+      North_Node.style.backgroundColor = String(Line_Colour);
+    }
+  }
+  if(Direction == "West"){
+    var Tolerance = 0.6*Gap;
+    if(Math.abs(Line_Length) > Tolerance){
+      West_Node.style.backgroundColor = String(Line_Colour);
+    }
+  }
+  if(Direction == "East"){
+    var Tolerance = 0.6*Gap;
+    if(Math.abs(Line_Length) > Tolerance){
+      East_Node.style.backgroundColor = String(Line_Colour);
+    }
+  }  
+}
 
 
 

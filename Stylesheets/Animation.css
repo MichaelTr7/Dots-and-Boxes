@@ -1,0 +1,10 @@
+
+.Confirm_Animation{
+  animation: Confirm_Keyframes 0.5s ease-out forwards;  
+}
+
+@keyframes Confirm_Keyframes{
+  0%{opacity: 1;}
+  50%{opacity: 1; filter: blur(2px);}
+  100%{opacity: 0; filter: blur(10px);}
+}
