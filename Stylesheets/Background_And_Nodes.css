@@ -117,6 +117,7 @@ body{
   z-index: 4;
 }
 
+
 .Dots{
   position: relative;
   height: 20%;
@@ -142,6 +143,20 @@ body{
   border-radius: min(1.4vw,1.4vh);
   transform-origin: top center;
   z-index: -1;
+}
+
+.LED_Indicator{
+  position: absolute;
+  left: 0px;
+  top: calc(100% - 2vh);
+  height: 2vh;
+  width: 100vw;
+  background-color: rgba(246, 73, 160,0.8);
+  transition: background-color 0.2s ease-out;
+}
+
+.LED_Indicator_Blue{
+  background-color: rgba(160, 50, 240,0.8);
 }
 
 @keyframes Fade_In{

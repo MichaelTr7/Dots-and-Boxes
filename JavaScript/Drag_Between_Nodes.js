@@ -3,8 +3,8 @@ window.onload = function(){
   var Nodes = document.getElementsByClassName('Dots');
   for(Node = 0; Node < Nodes.length; Node++){
     Nodes[Node].addEventListener("mousedown",Start_Node);
-    Nodes[Node].addEventListener("mouseup",End_Node);
     Nodes[Node].addEventListener("mouseup",Node_Left);
+    Nodes[Node].addEventListener("mouseup",Retrive_Node);
   }
   document.addEventListener("mouseup",Trivially_End_Drag);
   document.addEventListener("mouseup",Snap_To_End_Node);
@@ -22,6 +22,11 @@ var Start_Left_Position;
 var Gap;
 var Line_Length;
 var Direction;
+var Mouse_Up_Node;
+
+function Retrive_Node(){
+  Mouse_Up_Node = String(this.className.split(" ")[1]);
+}
 
 function Node_Entered(){
   if (typeof this.className !== 'undefined'){
@@ -38,11 +43,12 @@ function Node_Left(){
 }
 
 function Start_Node(){
+  Mouse_Up_Node = "";
   var Focussed_Line = document.getElementById('Active_Line');
   Focussed_Line.classList.remove('Confirm_Animation');
-  Focussed_Line.style.opacity = "1";
   Focussed_Line.style.height = "min(2.8vw,2.8vh)";
   Focussed_Line.style.width = "min(2.8vw,2.8vh)";
+  Focussed_Line.style.opacity = "1";
   Starting_Node = "";
   Ending_Node = "";
   Start_Top_Position = "";
@@ -52,12 +58,6 @@ function Start_Node(){
   Start_Drawing();
   var Node = document.getElementsByClassName(this.className)[0];
   Node.style.transform = "scale(1.75)";
-
-}
-
-function End_Node(){
-  Ending_Node = this.className.split(" ")[1];
-  Currently_Down = false;
 }
 
 function Trivially_End_Drag(){
@@ -66,8 +66,6 @@ function Trivially_End_Drag(){
 
 function Start_Drawing(){
   var Line = document.getElementById('Active_Line');
-  Line.style.width = "min(2.8vw,2.8vh)";
-  Line.style.height = "min(2.8vw,2.8vh)";
   var Target_Start_Node = document.getElementsByClassName("Dots " + Starting_Node)[0];
   var Parent_Container = document.getElementById('Dots_Wrapper');
   Node_Bounds = Target_Start_Node.getBoundingClientRect();
@@ -91,6 +89,7 @@ function Start_Drawing(){
 
 function Moving(e){
   if(Currently_Down){
+    var Magnitude_Displacement_Percentage = 0;
     var Line = document.getElementById('Active_Line');
     var Playing_Surface_Bounding_Box = document.getElementById('Dots_Wrapper').getBoundingClientRect();
     var Parent_Top = Playing_Surface_Bounding_Box.top;
@@ -107,7 +106,7 @@ function Moving(e){
     Gap = Math.abs(100*(Node_Left_Position - (Node_Right_Position+Node_Width*1.25))/Parent_Width);
     var Magnitude_Displacement = Math.sqrt(Math.pow(Horizontal_Displacement,2) + Math.pow(Vertical_Displacement,2));
     Magnitude_Displacement = Math.min(100*Magnitude_Displacement/Parent_Width,Gap);
-    var Magnitude_Displacement_Percentage = Magnitude_Displacement;
+    Magnitude_Displacement_Percentage = Magnitude_Displacement;
     // Calculating direction
     Direction = Get_Direction(Mouse_Top_Position,Start_Top_Position,Mouse_Left_Position,Start_Left_Position);
     if(Direction == "South"){
@@ -159,7 +158,8 @@ function Moving(e){
       Displacement_Percentage = Math.min(Displacement_Percentage,Gap);
       Line.style.width = Displacement_Percentage + "%";
       Line_Length = Magnitude_Displacement_Percentage;
-    }
+    }  
+
   }
 }
 
@@ -282,6 +282,7 @@ function Snap_To_End_Node(){
 }
 
 function Confirm_Drawing(){
+  if(Mouse_Up_Node != Starting_Node){
     var Row_Start = parseInt(Starting_Node.split("_")[0]);
     var Column_Start = parseInt(Starting_Node.split("_")[1]);
     if(Direction == "North"){
@@ -305,6 +306,7 @@ function Confirm_Drawing(){
     if(Check == true){
       Draw_Line(Starting_Node,Ending_Node);
     }
+  }
 }
 
 function Validate_Selected_Nodes(Node_1,Node_2){
@@ -321,13 +323,9 @@ function Validate_Selected_Nodes(Node_1,Node_2){
   var Line = document.getElementsByClassName(Path_Identifier)[0];
   Line_Style = window.getComputedStyle(Line);
   Line_Colour = String(Line_Style.getPropertyValue('background-color'));  
-  var Node_1_Value = parseInt(document.getElementsByClassName("Dots " + Node_1)[0].dataset.state);
-  var Node_2_Value = parseInt(document.getElementsByClassName("Dots " + Node_2)[0].dataset.state);
   if(Line_Colour != "rgba(0, 0, 0, 0.02)"){  
     return false;
   }else{
-  document.getElementsByClassName("Dots " + Node_1)[0].dataset.state = "1";
-  document.getElementsByClassName("Dots " + Node_2)[0].dataset.state = "1";
   return true;
 }
 }
@@ -337,6 +335,9 @@ function Animate_Snap(){
   Focus_Line.classList.add('Confirm_Animation');
   var Previous_Ending_Node = document.getElementsByClassName('Dots ' + Ending_Node)[0];
   Previous_Ending_Node.style.backgroundColor = "rgba(255,255,255,1)";
+  Focus_Line.style.opacity = "0";  
+  Focus_Line.style.height = "min(2.8vw,2.8vh)";
+  Focus_Line.style.width = "min(2.8vw,2.8vh)";
 }
 
 function Animate_Fling_Back(){
@@ -423,9 +424,11 @@ function Check_For_Completed_Square(){
       var Box_To_Fill = document.getElementsByClassName(Box_Identifier)[0];
       if(Line_Colour == "rgb(246, 73, 160)"){
         Box_To_Fill.classList.add('Pink_Box');
+        Box_To_Fill.dataset.state = "Pink";
       }
       else{
         Box_To_Fill.classList.add('Blue_Box');
+        Box_To_Fill.dataset.state = "Blue";
       }
       }         
     }
@@ -445,9 +448,11 @@ function Check_For_Completed_Square(){
       var Box_To_Fill = document.getElementsByClassName(Box_Identifier)[0];
       if(Line_Colour == "rgb(246, 73, 160)"){
         Box_To_Fill.classList.add('Pink_Box');
+        Box_To_Fill.dataset.state = "Pink";
       }
       else{
         Box_To_Fill.classList.add('Blue_Box');
+        Box_To_Fill.dataset.state = "Blue";
       }
       }       
     }
@@ -480,9 +485,11 @@ function Check_For_Completed_Square(){
         var Box_To_Fill = document.getElementsByClassName(Box_Identifier)[0];
         if(Line_Colour == "rgb(246, 73, 160)"){
           Box_To_Fill.classList.add('Pink_Box');
+          Box_To_Fill.dataset.state = "Pink";
         }
         else{
           Box_To_Fill.classList.add('Blue_Box');
+          Box_To_Fill.dataset.state = "Blue";
         }
         }       
       }
@@ -502,9 +509,11 @@ function Check_For_Completed_Square(){
         var Box_To_Fill = document.getElementsByClassName(Box_Identifier)[0];
         if(Line_Colour == "rgb(246, 73, 160)"){
           Box_To_Fill.classList.add('Pink_Box');
+          Box_To_Fill.dataset.state = "Pink";
         }
         else{
           Box_To_Fill.classList.add('Blue_Box');
+          Box_To_Fill.dataset.state = "Blue";
         }
         }       
       }
@@ -517,14 +526,18 @@ function Check_For_Completed_Square(){
 
 function Alternate_Line_Colour(){
   var Focussed_Line = document.getElementById('Active_Line');
+  var LED_Light_Bar = document.getElementsByClassName('LED_Indicator')[0];
   Line_Style = window.getComputedStyle(Focussed_Line);
   var Previous_Colour = String(Line_Style.getPropertyValue('background-color'));
   if(Previous_Colour == "rgb(246, 73, 160)"){
       Focussed_Line.style.backgroundColor = "rgb(160, 50, 240)";
+      LED_Light_Bar.classList.add('LED_Indicator_Blue');
   }
   else{
       Focussed_Line.style.backgroundColor = "rgb(246, 73, 160)";  
+      LED_Light_Bar.classList.remove('LED_Indicator_Blue');
   }
+  Evaluate_Winner();
 }
 
 function Check_For_Finished_Game(){
@@ -535,12 +548,39 @@ function Check_For_Finished_Game(){
   }
   if(Total == (Boxes.length)){
     console.log("Game Done");
-    // Determine winner and display results
-    
-    
+    Evaluate_Winner();    
   }
 }
 
+function Evaluate_Winner(){
+  var Colour_1 = "rgba(246, 75, 120, 1)";
+  var Colour_2 = "rgba(134, 110, 240, 1)";
+  var Pink_Total = 0;
+  var Blue_Total = 0;
+  var Boxes = document.getElementsByClassName('Boxes');
+  for(Box_Index = 0; Box_Index < Boxes.length; Box_Index++){
+    Boxes[Box_Index].dataset.state = "Pink";
+    var Box_Colour = String(Boxes[Box_Index].dataset.state);
+    if(Box_Colour == "Pink"){
+      Pink_Total = Pink_Total + 1;
+    }
+    if(Box_Colour == "Blue"){
+      Blue_Total = Blue_Total + 1;
+    }  
+  }
+  
+  if(Pink_Total > Blue_Total){
+    var Winner = "Pink";
+  }
+  else{
+    var Winner = "Blue";
+  }
+  
+  console.log(Winner);
+  
+  
+  
+}
 
 
 

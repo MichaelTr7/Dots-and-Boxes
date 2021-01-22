@@ -1,0 +1,38 @@
+
+#Modal_Background{
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 6;
+}
+
+#Winner_Banner{
+  display: table;
+  overflow: hidden;
+  position: absolute;
+  height: min(60vw,60vh);
+  width: min(80vw,80vh);
+  background-color: rgba(255,255,255,0.5); 
+  border-radius: min(3vw,3vh);
+  z-index: 7;
+  top: calc(50% - min(30vw,30vh));
+  left: calc(50% - min(40vw,40vh));
+  -webkit-backdrop-filter: blur(10px);
+}
+
+#Winner_Text{
+  display: table-cell;
+  vertical-align: middle; 
+  text-align: center;
+  font-size: min(8vw,8vh);
+  color: rgba(255,255,255,0.95);
+  font-family: sans-serif;
+  font-weight: bold;
+}
+  
+
