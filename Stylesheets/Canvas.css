@@ -1,9 +1,0 @@
-
-#Game_Canvas{
-  position: absolute;
-  height: 90%;
-  width: 90%;  
-  top: calc(50% - 45%);
-  left: calc(50% - 45%);
-  background-color: white;
-}

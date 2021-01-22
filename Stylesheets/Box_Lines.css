@@ -1,0 +1,41 @@
+
+#Horizontal_Lines_Wrapper{
+  display: grid;
+  grid-template-columns: repeat(9,1fr);
+  grid-template-rows: repeat(10,1fr);
+  position: absolute;
+  height: 95%;
+  width: 85%;
+  top: calc(50% - 43.5%);
+  left: calc(50% - 42%);
+  border-radius: min(3vh,3vw);
+  z-index: 2;
+}
+
+#Vertical_Lines_Wrapper{
+  display: grid;
+  grid-template-columns: repeat(10,1fr);
+  grid-template-rows: repeat(9,1fr);
+  position: absolute;
+  height: 85%;
+  width: 95%;
+  top: calc(50% - 42.5%);
+  left: calc(50% - 43.5%);
+  border-radius: min(3vh,3vw);
+  z-index: 2;
+}
+
+.Horizontal_Lines{
+  height: min(1.5vw,1.5vh);
+  width: 100%;
+  background-color: rgba(0,0,0,0.02);
+}
+
+.Vertical_Lines{
+  height: 100%;
+  width: min(1.5vw,1.5vh);
+  background-color: rgba(0,0,0,0.02);
+}
+
+
+

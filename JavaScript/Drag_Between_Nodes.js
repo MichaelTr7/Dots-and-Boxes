@@ -9,7 +9,9 @@ window.onload = function(){
   document.addEventListener("mouseup",Trivially_End_Drag);
   document.addEventListener("mouseup",Snap_To_End_Node);
   document.addEventListener("mouseup",Node_Left);
-  document.addEventListener("mousemove",Moving);  
+  document.addEventListener("mousemove",Moving); 
+  document.getElementById('Active_Line').style.opacity = "0"; 
+  document.getElementById('Active_Line').style.backgroundColor = "rgb(246, 73, 160)";
 }
 
 var Starting_Node;
@@ -23,9 +25,9 @@ var Direction;
 
 function Node_Entered(){
   if (typeof this.className !== 'undefined'){
-  var Node = document.getElementsByClassName(this.className)[0];
-  Node.style.transform = "scale(1.75)";
-}
+    var Node = document.getElementsByClassName(this.className)[0];
+    Node.style.transform = "scale(1.75)";
+  }
 }
 
 function Node_Left(){
@@ -36,9 +38,11 @@ function Node_Left(){
 }
 
 function Start_Node(){
-  var Focus_Line = document.getElementById('Active_Line');
-  Focus_Line.classList.remove('Confirm_Animation');
-  Focus_Line.style.opacity = 1;
+  var Focussed_Line = document.getElementById('Active_Line');
+  Focussed_Line.classList.remove('Confirm_Animation');
+  Focussed_Line.style.opacity = "1";
+  Focussed_Line.style.height = "min(2.8vw,2.8vh)";
+  Focussed_Line.style.width = "min(2.8vw,2.8vh)";
   Starting_Node = "";
   Ending_Node = "";
   Start_Top_Position = "";
@@ -48,8 +52,7 @@ function Start_Node(){
   Start_Drawing();
   var Node = document.getElementsByClassName(this.className)[0];
   Node.style.transform = "scale(1.75)";
-  var Line = document.getElementById('Active_Line');
-  Line.style.backgroundColor = "rgba(246,73,160,1)";
+
 }
 
 function End_Node(){
@@ -209,7 +212,11 @@ function Get_Direction(Mouse_Top_Position,Start_Top_Position,Mouse_Left_Position
   // var Minimum_Value = Filtered_Displacement_Array.sort()[0];
   // var Minimum_Index = Displacement_Array.indexOf(Math.min(Minimum_Value));  
   var Compass_Conversion = {0: "North",1: "South",2: "West",3: "East"};
-  
+  var North_Path_Identifier = String(Starting_Node) + "to" + String(Row_Start-1) + "_" + String(Column_Start);
+  var South_Path_Identifier = String(Starting_Node) + "to" + String(Row_Start+1) + "_" + String(Column_Start);
+  var West_Path_Identifier = String(Starting_Node) + "to" + String(Row_Start) + "_" + String(Column_Start-1);
+  var East_Path_Identifier = String(Starting_Node) + "to" + String(Row_Start) + "_" + String(Column_Start+1);
+
   if(Mouse_Top_Position >= Start_Top_Position & !isNaN(Displacement_Array[1])){
      Direction = "South";
   }
@@ -295,8 +302,9 @@ function Confirm_Drawing(){
     }    
     Ending_Node = String(Row_End) + "_" + String(Column_End); 
     var Check = Validate_Selected_Nodes(Starting_Node,Ending_Node);
-    console.log(Starting_Node + " " + Ending_Node);
-    console.log(Check);
+    if(Check == true){
+      Draw_Line(Starting_Node,Ending_Node);
+    }
 }
 
 function Validate_Selected_Nodes(Node_1,Node_2){
@@ -309,9 +317,13 @@ function Validate_Selected_Nodes(Node_1,Node_2){
     return false;
   }
   // Ignore if both nodes are true 
+  var Path_Identifier = Starting_Node + "to" + Ending_Node;
+  var Line = document.getElementsByClassName(Path_Identifier)[0];
+  Line_Style = window.getComputedStyle(Line);
+  Line_Colour = String(Line_Style.getPropertyValue('background-color'));  
   var Node_1_Value = parseInt(document.getElementsByClassName("Dots " + Node_1)[0].dataset.state);
   var Node_2_Value = parseInt(document.getElementsByClassName("Dots " + Node_2)[0].dataset.state);
-  if(Node_1_Value == 1 && Node_2_Value == 1){  
+  if(Line_Colour != "rgba(0, 0, 0, 0.02)"){  
     return false;
   }else{
   document.getElementsByClassName("Dots " + Node_1)[0].dataset.state = "1";
@@ -321,7 +333,6 @@ function Validate_Selected_Nodes(Node_1,Node_2){
 }
 
 function Animate_Snap(){
-  console.log("Snap");
   var Focus_Line = document.getElementById('Active_Line');
   Focus_Line.classList.add('Confirm_Animation');
   var Previous_Ending_Node = document.getElementsByClassName('Dots ' + Ending_Node)[0];
@@ -329,9 +340,8 @@ function Animate_Snap(){
 }
 
 function Animate_Fling_Back(){
-  console.log("Fling Back");
   var Focus_Line = document.getElementById('Active_Line');
-  Focus_Line.style.backgroundColor = "rgba(255,255,255,0)";
+  Focus_Line.style.opacity = "0";  
   Focus_Line.style.height = "min(2.8vw,2.8vh)";
   Focus_Line.style.width = "min(2.8vw,2.8vh)";
 }
@@ -367,6 +377,173 @@ function Node_Highlight_Confirmation(Direction,North_Node,South_Node,West_Node,E
     }
   }  
 }
+
+function Draw_Line(Starting_Node,Ending_Node){
+  var Path_Identifier = Starting_Node + "to" + Ending_Node;
+  var Line = document.getElementsByClassName(Path_Identifier)[0];
+  Line.style.backgroundColor = "rgba(225,225,225)";
+  Line.dataset.state = "1";
+  Check_For_Completed_Square();
+
+
+}
+
+function Check_For_Completed_Square(){
+  var Path_Identifier = Starting_Node + "to" + Ending_Node;
+  var Drawn_Line = document.getElementsByClassName(Path_Identifier)[0];
+  var Line_Orientation = String(Drawn_Line.className.split(" ")[0]);
+  var Path = String(Drawn_Line.className.split(" ")[1]);
+  var Line_Colour = document.getElementById('Active_Line').style.backgroundColor;
+  var Active_Line = document.getElementById('Active_Line');
+  var Score = 0;
+  
+  if(Line_Orientation == "Vertical_Lines"){
+    var Current_Column = parseInt((Path.split("to")[0]).split("_")[1]);
+    var Top_Row = parseInt((Path.split("to")[0]).split("_")[0]);
+    var Bottom_Row = parseInt((Path.split("to")[1]).split("_")[0]);
+    var Parallel_Left_Identifier =  String(Top_Row) + "_" + String(Current_Column-1) + "to" + String(Bottom_Row) + "_" + String(Current_Column-1);
+    var Parallel_Right_Identifier =  String(Top_Row) + "_" + String(Current_Column+1) + "to" + String(Bottom_Row) + "_" + String(Current_Column+1);
+    var Perpendicular_Top_Left_Identifier = String(Top_Row) + "_" + String(Current_Column) + "to" + String(Top_Row) + "_" + String(Current_Column-1); 
+    var Perpendicular_Bottom_Left_Identifier = String(Bottom_Row) + "_" + String(Current_Column) + "to" + String(Bottom_Row) + "_" + String(Current_Column-1); 
+    var Perpendicular_Top_Right_Identifier = String(Top_Row) + "_" + String(Current_Column) + "to" + String(Top_Row) + "_" + String(Current_Column+1); 
+    var Perpendicular_Bottom_Right_Identifier = String(Bottom_Row) + "_" + String(Current_Column) + "to" + String(Bottom_Row) + "_" + String(Current_Column+1); 
+
+    //Left neighbourhood
+    if(Current_Column != 1){
+      var Parallel_Left_Line = document.getElementsByClassName(Parallel_Left_Identifier)[0];
+      var Perpendicular_Top_Left_Line = document.getElementsByClassName(Perpendicular_Top_Left_Identifier)[0];
+      var Perpendicular_Bottom_Left_Line = document.getElementsByClassName(Perpendicular_Bottom_Left_Identifier)[0];
+      var Check_1 = parseInt(Parallel_Left_Line.dataset.state);
+      var Check_2 = parseInt(Perpendicular_Top_Left_Line.dataset.state);
+      var Check_3 = parseInt(Perpendicular_Bottom_Left_Line.dataset.state);
+      var Perimeter_Check = Check_1 + Check_2 + Check_3; 
+      if(Perimeter_Check == 3){
+      Score = Score + 1;
+      var Box_Identifier = "Boxes " + String(Top_Row) + "_" + String(Current_Column-1);
+      var Box_To_Fill = document.getElementsByClassName(Box_Identifier)[0];
+      if(Line_Colour == "rgb(246, 73, 160)"){
+        Box_To_Fill.classList.add('Pink_Box');
+      }
+      else{
+        Box_To_Fill.classList.add('Blue_Box');
+      }
+      }         
+    }
+
+    //Right neighbourhood 
+    if(Current_Column != 10){
+      var Parallel_Right_Line = document.getElementsByClassName(Parallel_Right_Identifier)[0];
+      var Perpendicular_Top_Right_Line = document.getElementsByClassName(Perpendicular_Top_Right_Identifier)[0];
+      var Perpendicular_Bottom_Right_Line = document.getElementsByClassName(Perpendicular_Bottom_Right_Identifier)[0];
+      var Check_1 = parseInt(Parallel_Right_Line.dataset.state);
+      var Check_2 = parseInt(Perpendicular_Top_Right_Line.dataset.state);
+      var Check_3 = parseInt(Perpendicular_Bottom_Right_Line.dataset.state);
+      var Perimeter_Check = Check_1 + Check_2 + Check_3;   
+      if(Perimeter_Check == 3){
+      Score = Score + 1;
+      var Box_Identifier = "Boxes " + String(Top_Row) + "_" + String(Current_Column);
+      var Box_To_Fill = document.getElementsByClassName(Box_Identifier)[0];
+      if(Line_Colour == "rgb(246, 73, 160)"){
+        Box_To_Fill.classList.add('Pink_Box');
+      }
+      else{
+        Box_To_Fill.classList.add('Blue_Box');
+      }
+      }       
+    }
+  
+    }
+    else{
+      var Current_Row = parseInt((Path.split("to")[0]).split("_")[0]);
+      var Left_Column = parseInt((Path.split("to")[0]).split("_")[1]);
+      var Right_Column = parseInt((Path.split("to")[1]).split("_")[1]);
+        
+      var Parallel_Top_Identifier = String(Current_Row-1) + "_" + String(Left_Column) + "to" + String(Current_Row-1) + "_" + String(Right_Column);
+      var Perpendicular_Top_Left_Identifier = String(Current_Row) + "_" + String(Left_Column) + "to" +  String(Current_Row-1) + "_" + String(Left_Column);
+      var Perpendicular_Top_Right_Identifier = String(Current_Row) + "_" + String(Right_Column) + "to" +  String(Current_Row-1) + "_" + String(Right_Column);
+      var Parallel_Bottom_Identifier = String(Current_Row+1) + "_" + String(Left_Column) + "to" + String(Current_Row+1) + "_" + String(Right_Column);
+      var Perpendicular_Bottom_Left_Identifier = String(Current_Row) + "_" + String(Left_Column) + "to" +  String(Current_Row+1) + "_" + String(Left_Column);
+      var Perpendicular_Bottom_Right_Identifier = String(Current_Row) + "_" + String(Right_Column) + "to" +  String(Current_Row+1) + "_" + String(Right_Column);
+      
+      // Top neighbourhood
+      if(Current_Row != 1){
+        var Parallel_Top_Line = document.getElementsByClassName(Parallel_Top_Identifier)[0];
+        var Perpendicular_Top_Left_Line = document.getElementsByClassName(Perpendicular_Top_Left_Identifier)[0];
+        var Perpendicular_Top_Right_Line = document.getElementsByClassName(Perpendicular_Top_Right_Identifier)[0];
+        var Check_1 = parseInt(Parallel_Top_Line.dataset.state);
+        var Check_2 = parseInt(Perpendicular_Top_Left_Line.dataset.state);
+        var Check_3 = parseInt(Perpendicular_Top_Right_Line.dataset.state);
+        var Perimeter_Check = Check_1 + Check_2 + Check_3;
+        if(Perimeter_Check == 3){
+        Score = Score + 1;
+        var Box_Identifier = "Boxes " + String(Current_Row-1) + "_" + String(Left_Column);
+        var Box_To_Fill = document.getElementsByClassName(Box_Identifier)[0];
+        if(Line_Colour == "rgb(246, 73, 160)"){
+          Box_To_Fill.classList.add('Pink_Box');
+        }
+        else{
+          Box_To_Fill.classList.add('Blue_Box');
+        }
+        }       
+      }
+
+      // Bottom neighbourhood
+      if(Current_Row != 10){
+        var Parallel_Bottom_Line = document.getElementsByClassName(Parallel_Bottom_Identifier)[0];
+        var Perpendicular_Bottom_Left_Line = document.getElementsByClassName(Perpendicular_Bottom_Left_Identifier)[0];
+        var Perpendicular_Bottom_Right_Line = document.getElementsByClassName(Perpendicular_Bottom_Right_Identifier)[0];  
+        var Check_1 = parseInt(Parallel_Bottom_Line.dataset.state);
+        var Check_2 = parseInt(Perpendicular_Bottom_Left_Line.dataset.state);
+        var Check_3 = parseInt(Perpendicular_Bottom_Right_Line.dataset.state);
+        var Perimeter_Check = Check_1 + Check_2 + Check_3;
+        if(Perimeter_Check == 3){
+        Score = Score + 1;
+        var Box_Identifier = "Boxes " + String(Current_Row) + "_" + String(Left_Column);
+        var Box_To_Fill = document.getElementsByClassName(Box_Identifier)[0];
+        if(Line_Colour == "rgb(246, 73, 160)"){
+          Box_To_Fill.classList.add('Pink_Box');
+        }
+        else{
+          Box_To_Fill.classList.add('Blue_Box');
+        }
+        }       
+      }
+  }
+  if(Score == 0){
+    Alternate_Line_Colour();
+  } 
+    Check_For_Finished_Game();   
+}
+
+function Alternate_Line_Colour(){
+  var Focussed_Line = document.getElementById('Active_Line');
+  Line_Style = window.getComputedStyle(Focussed_Line);
+  var Previous_Colour = String(Line_Style.getPropertyValue('background-color'));
+  if(Previous_Colour == "rgb(246, 73, 160)"){
+      Focussed_Line.style.backgroundColor = "rgb(160, 50, 240)";
+  }
+  else{
+      Focussed_Line.style.backgroundColor = "rgb(246, 73, 160)";  
+  }
+}
+
+function Check_For_Finished_Game(){
+  var Boxes = document.getElementsByClassName('Boxes');
+  var Total = 0;
+  for(Box_Index = 0; Box_Index < Boxes.length; Box_Index++){
+    Total = Total + parseInt(Boxes[Box_Index].dataset.state);    
+  }
+  if(Total == (Boxes.length)){
+    console.log("Game Done");
+    // Determine winner and display results
+    
+    
+  }
+}
+
+
+
+
 
 
 

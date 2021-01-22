@@ -2,12 +2,13 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dots and Boxes</title>
     <script src = "./JavaScript/Drag_Between_Nodes.js"></script>
-    <link rel="stylesheet" href="./Stylesheets/Background.css">
-    <link rel="stylesheet" href="./Stylesheets/Canvas.css">
+    <link rel="stylesheet" href="./Stylesheets/Background_And_Nodes.css">
     <link rel="stylesheet" href="./Stylesheets/Highlight_Configuration.css">
     <link rel="stylesheet" href="./Stylesheets/Animation.css">
+    <link rel="stylesheet" href="./Stylesheets/Box_Lines.css">
 
   </head>
   <body>
@@ -21,111 +22,319 @@
 
     <div id="Playing_Surface">
     <!-- <canvas id="Canvas" width="100%" height="100%"></canvas> -->
-      <div id="Lines_Wrapper">
-         
+      <div id="Horizontal_Lines_Wrapper">
+        <!-- Horizontal Lines Row 1 -->
+        <div class="Horizontal_Lines 1_1to1_2 1_2to1_1" data-state="0"></div> 
+        <div class="Horizontal_Lines 1_2to1_3 1_3to1_2" data-state="0"></div> 
+        <div class="Horizontal_Lines 1_3to1_4 1_4to1_3" data-state="0"></div> 
+        <div class="Horizontal_Lines 1_4to1_5 1_5to1_4" data-state="0"></div> 
+        <div class="Horizontal_Lines 1_5to1_6 1_6to1_5" data-state="0"></div> 
+        <div class="Horizontal_Lines 1_6to1_7 1_7to1_6" data-state="0"></div> 
+        <div class="Horizontal_Lines 1_7to1_8 1_8to1_7" data-state="0"></div> 
+        <div class="Horizontal_Lines 1_8to1_9 1_9to1_8" data-state="0"></div> 
+        <div class="Horizontal_Lines 1_9to1_10 1_10to1_9" data-state="0"></div> 
+
+        <!-- Horizontal Lines Row 2 -->
+        <div class="Horizontal_Lines 2_1to2_2 2_2to2_1" data-state="0"></div> 
+        <div class="Horizontal_Lines 2_2to2_3 2_3to2_2" data-state="0"></div> 
+        <div class="Horizontal_Lines 2_3to2_4 2_4to2_3" data-state="0"></div> 
+        <div class="Horizontal_Lines 2_4to2_5 2_5to2_4" data-state="0"></div> 
+        <div class="Horizontal_Lines 2_5to2_6 2_6to2_5" data-state="0"></div> 
+        <div class="Horizontal_Lines 2_6to2_7 2_7to2_6" data-state="0"></div> 
+        <div class="Horizontal_Lines 2_7to2_8 2_8to2_7" data-state="0"></div> 
+        <div class="Horizontal_Lines 2_8to2_9 2_9to2_8" data-state="0"></div> 
+        <div class="Horizontal_Lines 2_9to2_10 2_10to2_9" data-state="0"></div> 
+
+        <!-- Horizontal Lines Row 3 -->
+        <div class="Horizontal_Lines 3_1to3_2 3_2to3_1" data-state="0"></div>
+        <div class="Horizontal_Lines 3_2to3_3 3_3to3_2" data-state="0"></div> 
+        <div class="Horizontal_Lines 3_3to3_4 3_4to3_3" data-state="0"></div> 
+        <div class="Horizontal_Lines 3_4to3_5 3_5to3_4" data-state="0"></div> 
+        <div class="Horizontal_Lines 3_5to3_6 3_6to3_5" data-state="0"></div> 
+        <div class="Horizontal_Lines 3_6to3_7 3_7to3_6" data-state="0"></div> 
+        <div class="Horizontal_Lines 3_7to3_8 3_8to3_7" data-state="0"></div> 
+        <div class="Horizontal_Lines 3_8to3_9 3_9to3_8" data-state="0"></div> 
+        <div class="Horizontal_Lines 3_9to3_10 3_10to3_9" data-state="0"></div> 
+
+        <!-- Horizontal Lines Row 4 -->
+        <div class="Horizontal_Lines 4_1to4_2 4_2to4_1" data-state="0"></div> 
+        <div class="Horizontal_Lines 4_2to4_3 4_3to4_2" data-state="0"></div> 
+        <div class="Horizontal_Lines 4_3to4_4 4_4to4_3" data-state="0"></div> 
+        <div class="Horizontal_Lines 4_4to4_5 4_5to4_4" data-state="0"></div> 
+        <div class="Horizontal_Lines 4_5to4_6 4_6to4_5" data-state="0"></div> 
+        <div class="Horizontal_Lines 4_6to4_7 4_7to4_6" data-state="0"></div> 
+        <div class="Horizontal_Lines 4_7to4_8 4_8to4_7" data-state="0"></div> 
+        <div class="Horizontal_Lines 4_8to4_9 4_9to4_8" data-state="0"></div> 
+        <div class="Horizontal_Lines 4_9to4_10 4_10to4_9" data-state="0"></div> 
+
+        <!-- Horizontal Lines Row 5 -->
+        <div class="Horizontal_Lines 5_1to5_2 5_2to5_1" data-state="0"></div> 
+        <div class="Horizontal_Lines 5_2to5_3 5_3to5_2" data-state="0"></div> 
+        <div class="Horizontal_Lines 5_3to5_4 5_4to5_3" data-state="0"></div> 
+        <div class="Horizontal_Lines 5_4to5_5 5_5to5_4" data-state="0"></div> 
+        <div class="Horizontal_Lines 5_5to5_6 5_6to5_5" data-state="0"></div> 
+        <div class="Horizontal_Lines 5_6to5_7 5_7to5_6" data-state="0"></div> 
+        <div class="Horizontal_Lines 5_7to5_8 5_8to5_7" data-state="0"></div> 
+        <div class="Horizontal_Lines 5_8to5_9 5_9to5_8" data-state="0"></div> 
+        <div class="Horizontal_Lines 5_9to5_10 5_10to5_9" data-state="0"></div> 
+
+        <!-- Horizontal Lines Row 6 -->
+        <div class="Horizontal_Lines 6_1to6_2 6_2to6_1" data-state="0"></div> 
+        <div class="Horizontal_Lines 6_2to6_3 6_3to6_2" data-state="0"></div> 
+        <div class="Horizontal_Lines 6_3to6_4 6_4to6_3" data-state="0"></div> 
+        <div class="Horizontal_Lines 6_4to6_5 6_5to6_4" data-state="0"></div> 
+        <div class="Horizontal_Lines 6_5to6_6 6_6to6_5" data-state="0"></div> 
+        <div class="Horizontal_Lines 6_6to6_7 6_7to6_6" data-state="0"></div> 
+        <div class="Horizontal_Lines 6_7to6_8 6_8to6_7" data-state="0"></div> 
+        <div class="Horizontal_Lines 6_8to6_9 6_9to6_8" data-state="0"></div> 
+        <div class="Horizontal_Lines 6_9to6_10 6_10to6_9" data-state="0"></div> 
+
+        <!-- Horizontal Lines Row 7 -->
+        <div class="Horizontal_Lines 7_1to7_2 7_2to7_1" data-state="0"></div> 
+        <div class="Horizontal_Lines 7_2to7_3 7_3to7_2" data-state="0"></div> 
+        <div class="Horizontal_Lines 7_3to7_4 7_4to7_3" data-state="0"></div> 
+        <div class="Horizontal_Lines 7_4to7_5 7_5to7_4" data-state="0"></div> 
+        <div class="Horizontal_Lines 7_5to7_6 7_6to7_5" data-state="0"></div> 
+        <div class="Horizontal_Lines 7_6to7_7 7_7to7_6" data-state="0"></div> 
+        <div class="Horizontal_Lines 7_7to7_8 7_8to7_7" data-state="0"></div> 
+        <div class="Horizontal_Lines 7_8to7_9 7_9to7_8" data-state="0"></div> 
+        <div class="Horizontal_Lines 7_9to7_10 7_10to7_9" data-state="0"></div> 
+
+        <!-- Horizontal Lines Row 8 -->
+        <div class="Horizontal_Lines 8_1to8_2 8_2to8_1" data-state="0"></div> 
+        <div class="Horizontal_Lines 8_2to8_3 8_3to8_2" data-state="0"></div> 
+        <div class="Horizontal_Lines 8_3to8_4 8_4to8_3" data-state="0"></div> 
+        <div class="Horizontal_Lines 8_4to8_5 8_5to8_4" data-state="0"></div> 
+        <div class="Horizontal_Lines 8_5to8_6 8_6to8_5" data-state="0"></div> 
+        <div class="Horizontal_Lines 8_6to8_7 8_7to8_6" data-state="0"></div> 
+        <div class="Horizontal_Lines 8_7to8_8 8_8to8_7" data-state="0"></div> 
+        <div class="Horizontal_Lines 8_8to8_9 8_9to8_8" data-state="0"></div> 
+        <div class="Horizontal_Lines 8_9to8_10 8_10to8_9" data-state="0"></div> 
+
+        <!-- Horizontal Lines Row 9 -->
+        <div class="Horizontal_Lines 9_1to9_2 9_2to9_1" data-state="0"></div> 
+        <div class="Horizontal_Lines 9_2to9_3 9_3to9_2" data-state="0"></div> 
+        <div class="Horizontal_Lines 9_3to9_4 9_4to9_3" data-state="0"></div> 
+        <div class="Horizontal_Lines 9_4to9_5 9_5to9_4" data-state="0"></div> 
+        <div class="Horizontal_Lines 9_5to9_6 9_6to9_5" data-state="0"></div> 
+        <div class="Horizontal_Lines 9_6to9_7 9_7to9_6" data-state="0"></div> 
+        <div class="Horizontal_Lines 9_7to9_8 9_8to9_7" data-state="0"></div> 
+        <div class="Horizontal_Lines 9_8to9_9 9_9to9_8" data-state="0"></div> 
+        <div class="Horizontal_Lines 9_9to9_10 9_10to9_9" data-state="0"></div> 
+
+        <!-- Horizontal Lines Row 10 -->
+        <div class="Horizontal_Lines 10_1to10_2 10_2to10_1" data-state="0"></div> 
+        <div class="Horizontal_Lines 10_2to10_3 10_3to10_2" data-state="0"></div> 
+        <div class="Horizontal_Lines 10_3to10_4 10_4to10_3" data-state="0"></div> 
+        <div class="Horizontal_Lines 10_4to10_5 10_5to10_4" data-state="0"></div> 
+        <div class="Horizontal_Lines 10_5to10_6 10_6to10_5" data-state="0"></div> 
+        <div class="Horizontal_Lines 10_6to10_7 10_7to10_6" data-state="0"></div> 
+        <div class="Horizontal_Lines 10_7to10_8 10_8to10_7" data-state="0"></div> 
+        <div class="Horizontal_Lines 10_8to10_9 10_9to10_8" data-state="0"></div> 
+        <div class="Horizontal_Lines 10_9to10_10 10_10to10_9" data-state="0"></div> 
       </div>
 
+      <div id="Vertical_Lines_Wrapper">
+        
+        <!-- Vertical Lines Row 1 -->
+        <div class="Vertical_Lines 1_1to2_1 2_1to1_1" data-state="0"></div> 
+        <div class="Vertical_Lines 1_2to2_2 2_2to1_2" data-state="0"></div> 
+        <div class="Vertical_Lines 1_3to2_3 2_3to1_3" data-state="0"></div> 
+        <div class="Vertical_Lines 1_4to2_4 2_4to1_4" data-state="0"></div> 
+        <div class="Vertical_Lines 1_5to2_5 2_5to1_5" data-state="0"></div> 
+        <div class="Vertical_Lines 1_6to2_6 2_6to1_6" data-state="0"></div> 
+        <div class="Vertical_Lines 1_7to2_7 2_7to1_7" data-state="0"></div> 
+        <div class="Vertical_Lines 1_8to2_8 2_8to1_8" data-state="0"></div> 
+        <div class="Vertical_Lines 1_9to2_9 2_9to1_9" data-state="0"></div> 
+        <div class="Vertical_Lines 1_10to2_10 2_10to1_10" data-state="0"></div> 
+
+        <!-- Vertical Lines Row 2 -->
+        <div class="Vertical_Lines 2_1to3_1 3_1to2_1" data-state="0"></div> 
+        <div class="Vertical_Lines 2_2to3_2 3_2to2_2" data-state="0"></div> 
+        <div class="Vertical_Lines 2_3to3_3 3_3to2_3" data-state="0"></div> 
+        <div class="Vertical_Lines 2_4to3_4 3_4to2_4" data-state="0"></div> 
+        <div class="Vertical_Lines 2_5to3_5 3_5to2_5" data-state="0"></div> 
+        <div class="Vertical_Lines 2_6to3_6 3_6to2_6" data-state="0"></div> 
+        <div class="Vertical_Lines 2_7to3_7 3_7to2_7" data-state="0"></div> 
+        <div class="Vertical_Lines 2_8to3_8 3_8to2_8" data-state="0"></div> 
+        <div class="Vertical_Lines 2_9to3_9 3_9to2_9" data-state="0"></div> 
+        <div class="Vertical_Lines 2_10to3_10 3_10to2_10" data-state="0"></div> 
+
+        <!-- Vertical Lines Row 3 -->
+        <div class="Vertical_Lines 3_1to4_1 4_1to3_1" data-state="0"></div> 
+        <div class="Vertical_Lines 3_2to4_2 4_2to3_2" data-state="0"></div> 
+        <div class="Vertical_Lines 3_3to4_3 4_3to3_3" data-state="0"></div> 
+        <div class="Vertical_Lines 3_4to4_4 4_4to3_4" data-state="0"></div> 
+        <div class="Vertical_Lines 3_5to4_5 4_5to3_5" data-state="0"></div> 
+        <div class="Vertical_Lines 3_6to4_6 4_6to3_6" data-state="0"></div> 
+        <div class="Vertical_Lines 3_7to4_7 4_7to3_7" data-state="0"></div> 
+        <div class="Vertical_Lines 3_8to4_8 4_8to3_8" data-state="0"></div> 
+        <div class="Vertical_Lines 3_9to4_9 4_9to3_9" data-state="0"></div> 
+        <div class="Vertical_Lines 3_10to4_10 4_10to3_10" data-state="0"></div> 
+
+        <!-- Vertical Lines Row 4 -->
+        <div class="Vertical_Lines 4_1to5_1 5_1to4_1" data-state="0"></div> 
+        <div class="Vertical_Lines 4_2to5_2 5_2to4_2" data-state="0"></div> 
+        <div class="Vertical_Lines 4_3to5_3 5_3to4_3" data-state="0"></div> 
+        <div class="Vertical_Lines 4_4to5_4 5_4to4_4" data-state="0"></div> 
+        <div class="Vertical_Lines 4_5to5_5 5_5to4_5" data-state="0"></div> 
+        <div class="Vertical_Lines 4_6to5_6 5_6to4_6" data-state="0"></div> 
+        <div class="Vertical_Lines 4_7to5_7 5_7to4_7" data-state="0"></div> 
+        <div class="Vertical_Lines 4_8to5_8 5_8to4_8" data-state="0"></div> 
+        <div class="Vertical_Lines 4_9to5_9 5_9to4_9" data-state="0"></div> 
+        <div class="Vertical_Lines 4_10to5_10 5_10to4_10" data-state="0"></div> 
+
+        <!-- Vertical Lines Row 5 -->
+        <div class="Vertical_Lines 5_1to6_1 6_1to5_1" data-state="0"></div> 
+        <div class="Vertical_Lines 5_2to6_2 6_2to5_2" data-state="0"></div> 
+        <div class="Vertical_Lines 5_3to6_3 6_3to5_3" data-state="0"></div> 
+        <div class="Vertical_Lines 5_4to6_4 6_4to5_4" data-state="0"></div> 
+        <div class="Vertical_Lines 5_5to6_5 6_5to5_5" data-state="0"></div> 
+        <div class="Vertical_Lines 5_6to6_6 6_6to5_6" data-state="0"></div> 
+        <div class="Vertical_Lines 5_7to6_7 6_7to5_7" data-state="0"></div> 
+        <div class="Vertical_Lines 5_8to6_8 6_8to5_8" data-state="0"></div> 
+        <div class="Vertical_Lines 5_9to6_9 6_9to5_9" data-state="0"></div> 
+        <div class="Vertical_Lines 5_10to6_10 6_10to5_10" data-state="0"></div> 
+
+        <!-- Vertical Lines Row 6 -->
+        <div class="Vertical_Lines 6_1to7_1 7_1to6_1" data-state="0"></div> 
+        <div class="Vertical_Lines 6_2to7_2 7_2to6_2" data-state="0"></div> 
+        <div class="Vertical_Lines 6_3to7_3 7_3to6_3" data-state="0"></div> 
+        <div class="Vertical_Lines 6_4to7_4 7_4to6_4" data-state="0"></div> 
+        <div class="Vertical_Lines 6_5to7_5 7_5to6_5" data-state="0"></div> 
+        <div class="Vertical_Lines 6_6to7_6 7_6to6_6" data-state="0"></div> 
+        <div class="Vertical_Lines 6_7to7_7 7_7to6_7" data-state="0"></div> 
+        <div class="Vertical_Lines 6_8to7_8 7_8to6_8" data-state="0"></div> 
+        <div class="Vertical_Lines 6_9to7_9 7_9to6_9" data-state="0"></div> 
+        <div class="Vertical_Lines 6_10to7_10 7_10to6_10" data-state="0"></div> 
+
+        <!-- Vertical Lines Row 7 -->
+        <div class="Vertical_Lines 7_1to8_1 8_1to7_1" data-state="0"></div> 
+        <div class="Vertical_Lines 7_2to8_2 8_2to7_2" data-state="0"></div> 
+        <div class="Vertical_Lines 7_3to8_3 8_3to7_3" data-state="0"></div> 
+        <div class="Vertical_Lines 7_4to8_4 8_4to7_4" data-state="0"></div> 
+        <div class="Vertical_Lines 7_5to8_5 8_5to7_5" data-state="0"></div> 
+        <div class="Vertical_Lines 7_6to8_6 8_6to7_6" data-state="0"></div> 
+        <div class="Vertical_Lines 7_7to8_7 8_7to7_7" data-state="0"></div> 
+        <div class="Vertical_Lines 7_8to8_8 8_8to7_8" data-state="0"></div> 
+        <div class="Vertical_Lines 7_9to8_9 8_9to7_9" data-state="0"></div> 
+        <div class="Vertical_Lines 7_10to8_10 8_10to7_10" data-state="0"></div> 
+
+        <!-- Vertical Lines Row 8 -->
+        <div class="Vertical_Lines 8_1to9_1 9_1to8_1" data-state="0"></div>
+        <div class="Vertical_Lines 8_2to9_2 9_2to8_2" data-state="0"></div> 
+        <div class="Vertical_Lines 8_3to9_3 9_3to8_3" data-state="0"></div> 
+        <div class="Vertical_Lines 8_4to9_4 9_4to8_4" data-state="0"></div> 
+        <div class="Vertical_Lines 8_5to9_5 9_5to8_5" data-state="0"></div> 
+        <div class="Vertical_Lines 8_6to9_6 9_6to8_6" data-state="0"></div> 
+        <div class="Vertical_Lines 8_7to9_7 9_7to8_7" data-state="0"></div> 
+        <div class="Vertical_Lines 8_8to9_8 9_8to8_8" data-state="0"></div> 
+        <div class="Vertical_Lines 8_9to9_9 9_9to8_9" data-state="0"></div> 
+        <div class="Vertical_Lines 8_10to9_10 9_10to8_10" data-state="0"></div> 
+
+        <!-- Vertical Lines Row 9 -->
+        <div class="Vertical_Lines 9_1to10_1 10_1to9_1" data-state="0"></div> 
+        <div class="Vertical_Lines 9_2to10_2 10_2to9_2" data-state="0"></div> 
+        <div class="Vertical_Lines 9_3to10_3 10_3to9_3" data-state="0"></div> 
+        <div class="Vertical_Lines 9_4to10_4 10_4to9_4" data-state="0"></div> 
+        <div class="Vertical_Lines 9_5to10_5 10_5to9_5" data-state="0"></div> 
+        <div class="Vertical_Lines 9_6to10_6 10_6to9_6" data-state="0"></div> 
+        <div class="Vertical_Lines 9_7to10_7 10_7to9_7" data-state="0"></div> 
+        <div class="Vertical_Lines 9_8to10_8 10_8to9_8" data-state="0"></div> 
+        <div class="Vertical_Lines 9_9to10_9 10_9to9_9" data-state="0"></div> 
+        <div class="Vertical_Lines 9_10to10_10 10_10to9_10" data-state="0"></div> 
+      </div>
 
       <div id="Boxes_Wrapper">
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
+        <div class="Boxes 1_1"></div>
+        <div class="Boxes 1_2"></div>
+        <div class="Boxes 1_3"></div>
+        <div class="Boxes 1_4"></div>
+        <div class="Boxes 1_5"></div>
+        <div class="Boxes 1_6"></div>
+        <div class="Boxes 1_7"></div>
+        <div class="Boxes 1_8"></div>
+        <div class="Boxes 1_9"></div>
 
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
+        <div class="Boxes 2_1"></div>
+        <div class="Boxes 2_2"></div>
+        <div class="Boxes 2_3"></div>
+        <div class="Boxes 2_4"></div>
+        <div class="Boxes 2_5"></div>
+        <div class="Boxes 2_6"></div>
+        <div class="Boxes 2_7"></div>
+        <div class="Boxes 2_8"></div>
+        <div class="Boxes 2_9"></div>
 
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
+        <div class="Boxes 3_1"></div>
+        <div class="Boxes 3_2"></div>
+        <div class="Boxes 3_3"></div>
+        <div class="Boxes 3_4"></div>
+        <div class="Boxes 3_5"></div>
+        <div class="Boxes 3_6"></div>
+        <div class="Boxes 3_7"></div>
+        <div class="Boxes 3_8"></div>
+        <div class="Boxes 3_9"></div>
 
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
+        <div class="Boxes 4_1"></div>
+        <div class="Boxes 4_2"></div>
+        <div class="Boxes 4_3"></div>
+        <div class="Boxes 4_4"></div>
+        <div class="Boxes 4_5"></div>
+        <div class="Boxes 4_6"></div>
+        <div class="Boxes 4_7"></div>
+        <div class="Boxes 4_8"></div>
+        <div class="Boxes 4_9"></div>
 
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
+        <div class="Boxes 5_1"></div>
+        <div class="Boxes 5_2"></div>
+        <div class="Boxes 5_3"></div>
+        <div class="Boxes 5_4"></div>
+        <div class="Boxes 5_5"></div>
+        <div class="Boxes 5_6"></div>
+        <div class="Boxes 5_7"></div>
+        <div class="Boxes 5_8"></div>
+        <div class="Boxes 5_9"></div>
 
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
+        <div class="Boxes 6_1"></div>
+        <div class="Boxes 6_2"></div>
+        <div class="Boxes 6_3"></div>
+        <div class="Boxes 6_4"></div>
+        <div class="Boxes 6_5"></div>
+        <div class="Boxes 6_6"></div>
+        <div class="Boxes 6_7"></div>
+        <div class="Boxes 6_8"></div>
+        <div class="Boxes 6_9"></div>
 
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
+        <div class="Boxes 7_1"></div>
+        <div class="Boxes 7_2"></div>
+        <div class="Boxes 7_3"></div>
+        <div class="Boxes 7_4"></div>
+        <div class="Boxes 7_5"></div>
+        <div class="Boxes 7_6"></div>
+        <div class="Boxes 7_7"></div>
+        <div class="Boxes 7_8"></div>
+        <div class="Boxes 7_9"></div>
 
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
+        <div class="Boxes 8_1"></div>
+        <div class="Boxes 8_2"></div>
+        <div class="Boxes 8_3"></div>
+        <div class="Boxes 8_4"></div>
+        <div class="Boxes 8_5"></div>
+        <div class="Boxes 8_6"></div>
+        <div class="Boxes 8_7"></div>
+        <div class="Boxes 8_8"></div>
+        <div class="Boxes 8_9"></div>
 
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
-        <div class="Boxes"></div>
+        <div class="Boxes 9_1"></div>
+        <div class="Boxes 9_2"></div>
+        <div class="Boxes 9_3"></div>
+        <div class="Boxes 9_4"></div>
+        <div class="Boxes 9_5"></div>
+        <div class="Boxes 9_6"></div>
+        <div class="Boxes 9_7"></div>
+        <div class="Boxes 9_8"></div>
+        <div class="Boxes 9_9"></div>
       </div>
       
       <div id="Dots_Wrapper">
@@ -244,9 +453,6 @@
     </div>
     
     
-    
   </body>
-  
-
   
 </html>
