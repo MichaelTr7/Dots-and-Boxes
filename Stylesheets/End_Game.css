@@ -1,3 +1,7 @@
+@font-face{
+  font-family: Nunito;
+  src: url('../Fonts/Nunito/Nunito-ExtraBold.ttf');
+}
 
 #Modal_Background{
   display: none;
@@ -6,8 +10,8 @@
   left: 0px;
   height: 100%;
   width: 100%;
-  background-color: rgba(0,0,0,0.5);
-  -webkit-backdrop-filter: blur(2px);
+  background-color: rgba(255,255,255,0.5);
+  -webkit-backdrop-filter: blur(10px);
   z-index: 6;
 }
 
@@ -15,24 +19,39 @@
   display: table;
   overflow: hidden;
   position: absolute;
-  height: min(60vw,60vh);
-  width: min(80vw,80vh);
-  background-color: rgba(255,255,255,0.5); 
-  border-radius: min(3vw,3vh);
+  width: min(60vw,600px);
+  background-color: rgba(255,255,255,0.65); 
+  border-radius: 2.5vw;
   z-index: 7;
-  top: calc(50% - min(30vw,30vh));
-  left: calc(50% - min(40vw,40vh));
-  -webkit-backdrop-filter: blur(10px);
+  margin-top: 10vh;
+  left: calc(50% - min(30vw,300px));
+  box-shadow: inset 1px 1px 0px 0px rgba(255,255,255,0.7), 15px 15px 20px 0px rgba(0,0,0,0.25);
 }
 
 #Winner_Text{
   display: table-cell;
   vertical-align: middle; 
   text-align: center;
-  font-size: min(8vw,8vh);
-  color: rgba(255,255,255,0.95);
+  font-size: 4vw;
+  color: rgba(150,150,150,0.95);
   font-family: sans-serif;
   font-weight: bold;
+  font-family: Nunito;
 }
   
+#Play_Again_Button{
+  display: table-cell; */
+  vertical-align: middle; 
+  border: none;
+  background-color: white;
+  width: 50%;
+  height: min(20vh,60px);
+  margin-bottom: 5%;
+  border-radius: min(50vw,500px);
+  font-family: Nunito;
+}
+
+th{
+  /* border: 2px solid black; */
+}
 

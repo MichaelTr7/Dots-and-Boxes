@@ -1,3 +1,8 @@
+@font-face{
+  font-family: Nunito;
+  src: url('../Fonts/Nunito/Nunito-ExtraBold.ttf');
+}
+
 html{
   height: 100%;
 }
@@ -10,9 +15,9 @@ body{
 
 #Title{
   position: absolute;
-  top: 6vh;
+  top: 5vh;
   width: 100vw; 
-  font-family: sans-serif;
+  font-family: Nunito;
   font-weight: bold;
   font-size: min(8vw,8vh);
   color: white;
@@ -149,10 +154,12 @@ body{
   position: absolute;
   left: 0px;
   top: calc(100% - 2vh);
-  height: 2vh;
+  top: 0px;
+  height: 2.5vh;
   width: 100vw;
   background-color: rgba(246, 73, 160,0.8);
   transition: background-color 0.2s ease-out;
+  box-shadow: 0px 0.8vh 0.5px 0px rgba(0,0,0,0.1);
 }
 
 .LED_Indicator_Blue{
