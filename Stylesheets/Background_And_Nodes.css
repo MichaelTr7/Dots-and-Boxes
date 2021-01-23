@@ -24,6 +24,7 @@ body{
   text-align: center;
   left: calc(50% - 50vw);
   z-index: 1;
+  text-shadow: 0 0.7vh 2vh rgba(0,0,0,0.1);
 }
 
 .Bubbles{
@@ -94,6 +95,7 @@ body{
   height: 100%;
   width: 100%;
   z-index: 1;
+  background-color: rgba(0,0,0,0);
 }
 
 .Pink_Box{

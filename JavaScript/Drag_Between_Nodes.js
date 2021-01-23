@@ -12,6 +12,8 @@ window.onload = function(){
   document.addEventListener("mousemove",Moving); 
   document.getElementById('Active_Line').style.opacity = "0"; 
   document.getElementById('Active_Line').style.backgroundColor = "rgb(246, 73, 160)";
+  var Reset_Button = document.getElementById('Play_Again_Button');
+  Reset_Button.addEventListener("click",Reset_Game);
 }
 
 var Starting_Node;
@@ -521,7 +523,7 @@ function Check_For_Completed_Square(){
   if(Score == 0){
     Alternate_Line_Colour();
   } 
-    Check_For_Finished_Game();   
+    Check_For_Finished_Game();  
 }
 
 function Alternate_Line_Colour(){
@@ -537,16 +539,17 @@ function Alternate_Line_Colour(){
       Focussed_Line.style.backgroundColor = "rgb(246, 73, 160)";  
       LED_Light_Bar.classList.remove('LED_Indicator_Blue');
   }
-  Evaluate_Winner();
 }
 
 function Check_For_Finished_Game(){
   var Boxes = document.getElementsByClassName('Boxes');
   var Total = 0;
   for(Box_Index = 0; Box_Index < Boxes.length; Box_Index++){
-    Total = Total + parseInt(Boxes[Box_Index].dataset.state);    
+    if(String(Boxes[Box_Index].dataset.state) != "0"){
+    Total = Total + 1;  
   }
-  if(Total == (Boxes.length)){
+  }
+  if(Total == parseInt(Boxes.length)){
     console.log("Game Done");
     Evaluate_Winner();    
   }
@@ -557,9 +560,9 @@ function Evaluate_Winner(){
   var Colour_2 = "rgba(134, 110, 240, 1)";
   var Pink_Total = 0;
   var Blue_Total = 0;
+  
   var Boxes = document.getElementsByClassName('Boxes');
   for(Box_Index = 0; Box_Index < Boxes.length; Box_Index++){
-    Boxes[Box_Index].dataset.state = "Pink";
     var Box_Colour = String(Boxes[Box_Index].dataset.state);
     if(Box_Colour == "Pink"){
       Pink_Total = Pink_Total + 1;
@@ -569,18 +572,58 @@ function Evaluate_Winner(){
     }  
   }
   
+  console.log(Pink_Total);
+
+  
+  var Winner_Text = document.getElementById('Winner_Text');
+  var Winner_Icon = document.getElementById('Winner_Icon');
   if(Pink_Total > Blue_Total){
     var Winner = "Pink";
+    Winner_Icon.style.background = "linear-gradient(0deg, #EE459A 0%, #F95371 100%)";
+    Winner_Text.innerHTML = "<br>The Winner is <br> Pink";
   }
   else{
     var Winner = "Blue";
+    Winner_Icon.style.background = "linear-gradient(180deg, #8675F7 0%, #75B1F7 100%)";
+    Winner_Text.innerHTML = "<br>The Winner is <br> Blue";
+  }
+  var Winner_Panel = document.getElementById('Modal_Background');
+  Winner_Panel.style.display = "block";
+  Winner_Panel.classList.add('Blur_In_Animation');
+}
+
+
+function Reset_Game(){
+  var Boxes = document.getElementsByClassName('Boxes');
+  var Vertical_Lines = document.getElementsByClassName('Vertical_Lines');
+  var Horizontal_Lines = document.getElementsByClassName('Horizontal_Lines');
+  
+  for(Index = 0; Index < Boxes.length; Index++){
+    Boxes[Index].dataset.state = "0";
+    Boxes[Index].classList.remove('Pink_Box');
+    Boxes[Index].classList.remove('Blue_Box');
   }
   
-  console.log(Winner);
+  for(Index = 0; Index < Vertical_Lines.length; Index++){
+    Vertical_Lines[Index].dataset.state = "0";
+    Vertical_Lines[Index].style.backgroundColor = "rgba(0,0,0,0.02)";
+  }
   
+  for(Index = 0; Index < Horizontal_Lines.length; Index++){
+    Horizontal_Lines[Index].dataset.state = "0";
+    Horizontal_Lines[Index].style.backgroundColor = "rgba(0,0,0,0.02)";
+  }
   
-  
+  var Winner_Panel = document.getElementById('Modal_Background');
+  Winner_Panel.classList.remove('Blur_In_Animation');
+  Winner_Panel.classList.add('Blur_Out_Animation');
+  var Window_Fade_Duration = 800;
+  setTimeout(function () {
+    Winner_Panel.style.display = "none";  
+    Winner_Panel.classList.remove('Blur_Out_Animation');
+  }, Window_Fade_Duration);
 }
+
 
 
 

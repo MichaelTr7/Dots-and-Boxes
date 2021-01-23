@@ -4,16 +4,15 @@
 }
 
 #Modal_Background{
-  /* display: none; */
+  display: none;
   position: absolute;
   top: 0px;
   left: 0px;
   height: 100%;
   width: 100%;
   background-color: rgba(255,255,255,0.5);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
   z-index: 6;
+  opacity: 0;
 }
 
 #Winner_Banner{
@@ -55,7 +54,13 @@
   font-family: Nunito;
   font-size: min(3vw,20px);
   text-shadow: 0 1.7px 1px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
 }
+
+#Play_Again_Button:hover{
+  transform: scale(1.1);
+}
+
 
 #Winner_Icon{
   position: relative;
@@ -74,6 +79,24 @@
 
 .Winner_Icon_Blue{
   background: linear-gradient(180deg, #8675F7 0%, #75B1F7 100%);
+}
+
+.Blur_In_Animation{
+  animation: Blur_Keyframes 0.8s ease forwards; 
+}
+
+.Blur_Out_Animation{
+  animation: Blur_Keyframes_2 0.8s ease forwards;
+}
+
+@keyframes Blur_Keyframes{
+  from{backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px) saturate(0); opacity: 0;}
+  to{backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px) saturate(2); opacity: 1;}
+}
+
+@keyframes Blur_Keyframes_2{
+from{backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); opacity: 1;}
+to{backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); opacity: 0; display: none;}
 }
 
 
