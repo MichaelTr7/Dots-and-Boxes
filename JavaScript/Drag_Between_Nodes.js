@@ -12,8 +12,9 @@ window.onload = function(){
   document.addEventListener("mousemove",Moving); 
   document.getElementById('Active_Line').style.opacity = "0"; 
   document.getElementById('Active_Line').style.backgroundColor = "rgb(246, 73, 160)";
-  document.getElementById('Open_Menu_Button').addEventListener("click",Open_Menu);  
-  document.getElementById('Close_Menu_Button').addEventListener("click",Open_Menu);  
+  // document.getElementById('Open_Menu_Button').addEventListener("click",Open_Menu);  
+  // document.getElementById('Close_Menu_Button').addEventListener("click",Open_Menu);  
+  document.getElementById('Overlay').addEventListener("click",Open_Menu);  
 
   var Reset_Button = document.getElementById('Play_Again_Button');
   Reset_Button.addEventListener("click",Reset_Game);

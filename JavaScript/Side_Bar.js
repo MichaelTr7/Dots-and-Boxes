@@ -5,8 +5,10 @@ function Open_Menu(){
   var Direction = String(getComputedStyle(Root).getPropertyValue('--Direction'));
   if(Direction == "forwards"){
     Root.style.setProperty('--Direction','reverse');
+    Root.style.setProperty('--Duration','0.3s');
   }else{
     Root.style.setProperty('--Direction','forwards');
+    Root.style.setProperty('--Duration','0.5s');
   }
   Slide_Bar.classList.remove('Slide_Menu_Animation');
   void Slide_Bar.offsetWidth;

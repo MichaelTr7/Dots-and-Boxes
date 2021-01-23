@@ -21,7 +21,7 @@
   display: block;
   margin-top: 10px;
   height: max(5.5vw,48px);
-  top: 10px;
+  top: 150px;
   left: calc(50% - 40%);
   text-decoration: none;
   width: 80%;
@@ -54,7 +54,6 @@
   position: absolute;
   height: max(25vw,250px);
   width: max(25vw,250px);
-  /* background-color: rgba(0,0,0,0.05); */
   bottom: 0px;
   z-index: 11;
 }
@@ -62,12 +61,17 @@
 .Navigation_Buttons{
   transition: transform 0.2s ease, filter 0.2s ease;
   text-shadow: 0 1.9px 1px rgba(0,0,0,0.1);
+  background-image: linear-gradient(to left, rgba(0,0,0,0) 50%, rgba(238,69,154,0.5) 50%);
+  background-size: 200% 100%;
+  background-position:  100% 0%;
+  transition: background-position 0.5s ease-out, transform 0.2s ease-out;
 }
 
 .Navigation_Buttons:hover:not(#Close_Menu_Button){
   filter: contrast(1.1);
   transform: scale(1.05);
-
+  transform: scale(1.05);
+  background-position: 0% 0%;
 }
 
 #Close_Menu_Button:hover{
@@ -75,13 +79,15 @@
 }
 
 #Open_Menu_Button{
+  display: grid;
+  grid-template-rows: repeat(3,1fr);
+  grid-gap: 1px;
   position: absolute;
-  width: max(5vw,45px);
-  height: max(5vw,45px);
+  width: max(5vw,40px);
+  height: max(5vw,40px);
   font-size: max(30px,2vw);
-  margin-top: 9px;
-  margin-left: 9px;
-  height: max(5vw,45px);
+  margin-top: 20px;
+  margin-left: 10px;
   border: none;
   border-radius: max(1vw,5px);
   color: white;
@@ -91,10 +97,55 @@
   backdrop-filter: blur(20px) saturate(1.2);
   box-shadow: inset -0.5px -0.5px 1px 0px white, inset 1px 1px 0px 0px rgba(0,0,0,0.05);
   cursor: pointer;
-  z-index: 2;
+  z-index: 14;
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(220,220,220,0.8) 50%);
+  background-size: 100% 200%;
+  background-position:  0% 0%;
+  transition: background-position 0.2s ease-out, transform 0.2s ease-out;
+  
+}
+
+#Open_Menu_Button:hover{
+  transform: scale(1.05);
+  background-position: 0% 100%;
+}
+
+.Menu_Symbol_Rect{
+  position: relative;
+  grid-row: span 1;
+  height: 100%;
+  width: 70%;
+  left: calc(50% - 35%);
+  cursor: pointer;
+}
+
+.Menu_Lines{
+  position: absolute;
+  height: 20%;
+  width: 100%;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 100px;
+}
+
+#Top_Line{
+  top: calc(100% - 20%);
+}
+
+#Middle_Line{
+  top: calc(50% - 10%);
+}
+
+#Overlay{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0);
+  cursor: pointer; 
 }
 
 #Close_Menu_Button{
+  opacity: 0;
   width: max(5vw,45px);
   height: max(5vw,45px);
   left: calc(100% - max(5vw,45px));
@@ -103,20 +154,23 @@
 
 
 .Slide_Menu_Animation{
-  animation: Slide_Keyframes 0.5s forwards;
+  animation: Slide_Keyframes forwards;
+  animation-duration: var(--Duration);
   animation-direction: var(--Direction);
   animation-timing-function: cubic-bezier();
 }
 
 @keyframes Slide_Keyframes {
-  0%{left: calc(-1*max(25vw,250px));}
-  100%{left: 0px;}
+  0%{left: calc(-1*max(25vw,250px)); opacity: 0;}
+  100%{left: 0px; opacity: 1;}
 }
-
 
 :root {
   --Direction: forwards;
+  --Duration: 0.5s;
 }
+
+
 
 
 

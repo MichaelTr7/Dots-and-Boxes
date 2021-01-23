@@ -155,8 +155,8 @@ body{
 .LED_Indicator{
   position: absolute;
   left: 0px;
-  top: calc(100% - 2vh);
-  /* top: 0px; */
+  /* top: calc(100% - 2vh); */
+  top: 0px;
   height: 2.5vh;
   width: 100vw;
   background-color: rgba(246, 73, 160,0.8);
