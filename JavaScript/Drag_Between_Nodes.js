@@ -4,7 +4,7 @@ window.onload = function(){
   for(Node = 0; Node < Nodes.length; Node++){
     Nodes[Node].addEventListener("mousedown",Start_Node);
     Nodes[Node].addEventListener("mouseup",Node_Left);
-    Nodes[Node].addEventListener("mouseup",Retrive_Node);
+    Nodes[Node].addEventListener("mouseup",Retrieve_Node);
   }
   document.addEventListener("mouseup",Trivially_End_Drag);
   document.addEventListener("mouseup",Snap_To_End_Node);
@@ -15,7 +15,8 @@ window.onload = function(){
   // document.getElementById('Open_Menu_Button').addEventListener("click",Open_Menu);  
   // document.getElementById('Close_Menu_Button').addEventListener("click",Open_Menu);  
   document.getElementById('Overlay').addEventListener("click",Open_Menu);  
-
+  document.getElementById('Help_Button').addEventListener("click",Show_Tutorial);
+  document.getElementById('Help_Button').addEventListener("click",Close_Side_Bar)
   var Reset_Button = document.getElementById('Play_Again_Button');
   Reset_Button.addEventListener("click",Reset_Game);
 }
@@ -30,7 +31,8 @@ var Line_Length;
 var Direction;
 var Mouse_Up_Node;
 
-function Retrive_Node(){
+
+function Retrieve_Node(){
   Mouse_Up_Node = String(this.className.split(" ")[1]);
 }
 
@@ -49,6 +51,12 @@ function Node_Left(){
 }
 
 function Start_Node(){
+  var Slide_Menu = document.getElementById('Sidebar');
+  Slide_Menu_Style = window.getComputedStyle(Slide_Menu);
+  Slide_Menu_Position = String(Slide_Menu_Style.getPropertyValue('left'));  
+  if(Slide_Menu_Position == "0px"){
+      Open_Menu();
+  }  
   Mouse_Up_Node = "";
   var Focussed_Line = document.getElementById('Active_Line');
   Focussed_Line.classList.remove('Confirm_Animation');

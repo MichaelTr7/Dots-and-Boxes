@@ -1,0 +1,103 @@
+@font-face{
+  font-family: Nunito;
+  src: url('../Fonts/Nunito/Nunito-ExtraBold.ttf');
+}
+
+#Tutorial_Modal_Background{
+  position: absolute;
+  top: 0px;
+  left: 100%;
+  height: 100%;
+  width: 100%;
+  /* background: linear-gradient(45deg, #FF70AC 0%, #AC9EFF 60%, #99DAFF 100%); */
+  z-index: 20;
+  transition: left 0.5s;
+  background-color: rgba(255,255,255,0.1);
+  -webkit-backdrop-filter: blur(15px) saturate(1.2); 
+  backdrop-filter: blur(15px) saturate(1.2);
+}
+
+#Card_Wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  justify-content: center;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  align-content: start;
+}
+
+.Tutorial_Cards{
+  background-color: rgba(0,0,0,0.2);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  backdrop-filter: blur(10px) saturate(1.5);
+  border-radius: 2vw;
+  align-self: center;
+  align-self: start;
+  box-shadow: 1.5vw 1.5vw 1vw 0vw rgba(0,0,0,0.1);
+}
+
+.Tutorial_Cards:nth-of-type(1){
+  margin-top: 2vw;
+  margin-right: 1vw;
+  width: 92vw;
+  height: 10vw;
+}
+
+.Tutorial_Cards:nth-of-type(2){
+  margin-top: 2vw;
+  margin-right: 1vw;
+  width: 46vw;
+  height: 45vw;
+}
+
+.Tutorial_Cards:nth-of-type(3){
+  margin-top: 2vw;
+  margin-left: 1vw;
+  width: 46vw;  
+  height: 60vw;
+}
+
+.Tutorial_Cards:nth-of-type(4){
+  margin-top: -13vw;
+  padding-bottom: 5vw;
+  margin-right: 1vw;
+  margin-bottom: 2vw;
+  width: 46vw;  
+  height: 60vw;
+}
+
+.Tutorial_Cards:nth-of-type(5){
+  margin-top: 2vw;
+  margin-left: 1vw;
+  margin-bottom: 2vw;
+  width: 46vw;
+  height: 50vw;
+}
+
+#Return_To_Game_Button{
+  height: 100%;
+  width: 100%;
+  border: none;
+  border-radius: 2vw;
+  font-family: Nunito;
+  font-size: 4vw;
+  color: white;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  background: linear-gradient(100deg, rgba(238,69,154,1) 0%, rgba(249,83,113,1) 100%);
+}
+
+
+
+
+
+
+
+
+
+
+
+
