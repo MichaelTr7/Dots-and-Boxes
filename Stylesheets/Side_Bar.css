@@ -18,8 +18,6 @@
   overflow-y: scroll;
   overflow-x: hidden;
   box-shadow: 2px 0px 20px 0px rgba(0,0,0,0.2);
-  direction: rtl;
-
 }
 
 #Sidebar > a {
@@ -28,7 +26,7 @@
   margin-top: 10px;
   height: max(5.5vw,48px);
   top: 150px;
-  left: calc(28% - 40%);
+  left: calc(50% - 40%);
   text-decoration: none;
   width: 80%;
 }
