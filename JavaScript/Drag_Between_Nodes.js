@@ -16,7 +16,8 @@ window.onload = function(){
   // document.getElementById('Close_Menu_Button').addEventListener("click",Open_Menu);  
   document.getElementById('Overlay').addEventListener("click",Open_Menu);  
   document.getElementById('Help_Button').addEventListener("click",Show_Tutorial);
-  document.getElementById('Help_Button').addEventListener("click",Close_Side_Bar)
+  // document.getElementById('Help_Button').addEventListener("click",Close_Side_Bar);
+  document.getElementById('Return_To_Game_Button').addEventListener("click",Show_Tutorial);
   var Reset_Button = document.getElementById('Play_Again_Button');
   Reset_Button.addEventListener("click",Reset_Game);
 }
