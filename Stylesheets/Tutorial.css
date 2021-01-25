@@ -3,18 +3,6 @@
   src: url('../Fonts/Nunito/Nunito-ExtraBold.ttf');
 }
 
-/* ::-webkit-scrollbar {
-  -webkit-appearance: none;
-  height: 10px;
-  width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: rgba(255,255,255,0.2);
-  box-shadow: inset 1px 1px 0px 0px rgba(255,255,255,0.7);
-} */
-
 #Tutorial_Modal_Background{
   position: absolute;
   top: 0%;
