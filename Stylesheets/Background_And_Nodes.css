@@ -13,6 +13,17 @@ body{
   overflow: hidden;
 }
 
+#Backdrop{
+  top: 0%;
+  left: 0%;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(45deg, #FF70AC 0%, #AC9EFF 60%, #99DAFF 100%);
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
 #Title{
   position: absolute;
   top: 5vh;

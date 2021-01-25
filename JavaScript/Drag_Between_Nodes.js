@@ -5,6 +5,7 @@ window.onload = function(){
     Nodes[Node].addEventListener("mousedown",Start_Node);
     Nodes[Node].addEventListener("mouseup",Node_Left);
     Nodes[Node].addEventListener("mouseup",Retrieve_Node);
+    Nodes[Node].addEventListener("mouseup",Close_Panels);
   }
   document.addEventListener("mouseup",Trivially_End_Drag);
   document.addEventListener("mouseup",Snap_To_End_Node);
@@ -12,12 +13,14 @@ window.onload = function(){
   document.addEventListener("mousemove",Moving); 
   document.getElementById('Active_Line').style.opacity = "0"; 
   document.getElementById('Active_Line').style.backgroundColor = "rgb(246, 73, 160)";
-  // document.getElementById('Open_Menu_Button').addEventListener("click",Open_Menu);  
-  // document.getElementById('Close_Menu_Button').addEventListener("click",Open_Menu);  
   document.getElementById('Overlay').addEventListener("click",Open_Menu);  
   document.getElementById('Help_Button').addEventListener("click",Show_Tutorial);
-  // document.getElementById('Help_Button').addEventListener("click",Close_Side_Bar);
   document.getElementById('Return_To_Game_Button').addEventListener("click",Show_Tutorial);
+  document.getElementById('Backdrop').addEventListener("click",Close_Panels);
+  document.getElementById('Playing_Surface').addEventListener("click",Close_Panels);
+  document.getElementById('Title').addEventListener("click",Close_Panels);
+  document.getElementById('LED_Indicator').addEventListener("click",Close_Panels);
+  // document.body.addEventListener("click",Close_Panels);
   var Reset_Button = document.getElementById('Play_Again_Button');
   Reset_Button.addEventListener("click",Reset_Game);
 }
@@ -52,12 +55,7 @@ function Node_Left(){
 }
 
 function Start_Node(){
-  var Slide_Menu = document.getElementById('Sidebar');
-  Slide_Menu_Style = window.getComputedStyle(Slide_Menu);
-  Slide_Menu_Position = String(Slide_Menu_Style.getPropertyValue('left'));  
-  if(Slide_Menu_Position == "0px"){
-      Open_Menu();
-  }  
+    
   Mouse_Up_Node = "";
   var Focussed_Line = document.getElementById('Active_Line');
   Focussed_Line.classList.remove('Confirm_Animation');

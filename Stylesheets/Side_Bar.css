@@ -203,17 +203,17 @@
 .Slide_Menu_Animation{
   animation: Slide_Keyframes forwards;
   animation-duration: var(--Duration);
-  animation-direction: var(--Direction);
+  animation-direction: var(--Slide_Direction_1);
   animation-timing-function: linear;
 }
 
 @keyframes Slide_Keyframes {
-  0%{left: calc(-1*max(30vw,300px)); opacity: 0;}
-  100%{left: 0px; opacity: 1;}
+  0%{transform: translateX(0); opacity: 0;}
+  100%{transform: translateX(calc(1*max(25vw,250px))); opacity: 1;}
 }
 
 :root {
-  --Direction: forwards;
+  --Slide_Direction_1: forwards;
   --Duration: 0.2s;
 }
 
