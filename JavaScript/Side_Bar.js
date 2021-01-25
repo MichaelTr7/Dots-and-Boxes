@@ -47,6 +47,8 @@ function Show_Tutorial(){
   Tutorial_Panel.classList.remove('Slide_Up_Animation');
   void Tutorial_Panel.offsetWidth;
   Tutorial_Panel.classList.add('Slide_Up_Animation');
+
+
 }
 
 

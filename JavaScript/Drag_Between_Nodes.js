@@ -20,6 +20,8 @@ window.onload = function(){
   document.getElementById('Playing_Surface').addEventListener("click",Close_Panels);
   document.getElementById('Title').addEventListener("click",Close_Panels);
   document.getElementById('LED_Indicator').addEventListener("click",Close_Panels);
+  window.addEventListener('resize', Close_Panels);
+
   // document.body.addEventListener("click",Close_Panels);
   var Reset_Button = document.getElementById('Play_Again_Button');
   Reset_Button.addEventListener("click",Reset_Game);
@@ -379,13 +381,13 @@ function Node_Highlight_Confirmation(Direction,North_Node,South_Node,West_Node,E
     }
   }
   if(Direction == "West"){
-    var Tolerance = 0.6*Gap;
+    var Tolerance = 0.7*Gap;
     if(Math.abs(Line_Length) > Tolerance){
       West_Node.style.backgroundColor = String(Line_Colour);
     }
   }
   if(Direction == "East"){
-    var Tolerance = 0.6*Gap;
+    var Tolerance = 0.7*Gap;
     if(Math.abs(Line_Length) > Tolerance){
       East_Node.style.backgroundColor = String(Line_Colour);
     }
