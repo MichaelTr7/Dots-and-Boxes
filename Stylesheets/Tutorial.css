@@ -60,6 +60,8 @@
 }
 
 .Tutorial_Cards:not(:nth-child(1)){
+  display: flex;
+  /* align-items: center; */
   background-color: rgba(210,208,245,1);
   height: 20vw;
   border-radius: 2vw;
@@ -78,6 +80,10 @@
   width: 30vw;
   left: calc(50% - 15vw);
   grid-column: 1 / span 2;
+  background-image: url('./Assets/Tutorial Image 1.png');
+  background-size: 60% auto;
+  background-repeat: no-repeat;
+  background-position: 52% 72%;
 }
 
 .Tutorial_Cards:nth-of-type(3){
@@ -86,6 +92,10 @@
   width: 30vw;
   left: calc(50% - 15vw);
   grid-column: 1 / span 2;
+  background-image: url('./Assets/Tutorial Image 2.png');
+  background-size: 60% auto;
+  background-repeat: no-repeat;
+  background-position: 52% 72%;
 }
 
 .Tutorial_Cards:nth-of-type(4){
@@ -94,7 +104,21 @@
   width: 30vw;
   left: calc(50% - 15vw);
   grid-column: 1 / span 2;
+  background-image: url('./Assets/Tutorial Image 3.png');
+  background-size: 60% auto;
+  background-repeat: no-repeat;
+  background-position: 52% 72%;
 }
+
+.Tutorial_Cards > label{
+  font-family: Nunito;
+  color: white;
+  margin-top: 8%;
+  width: 100%;
+  font-size: 2vw;
+  text-align: center;
+}
+
 
 .Slide_Up_Animation{
   animation: Slide_Up_Tutorial 0.12s forwards;
