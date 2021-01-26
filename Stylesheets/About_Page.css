@@ -1,0 +1,9 @@
+
+#Game_Banner{
+  position: absolute;
+  height: auto;
+  width: 50vw;
+  margin-top: 20px;
+  left: calc(50% - 25vw);
+  /* background-color: white; */
+}

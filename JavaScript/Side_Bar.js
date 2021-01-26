@@ -47,18 +47,6 @@ function Show_Tutorial(){
   Tutorial_Panel.classList.remove('Slide_Up_Animation');
   void Tutorial_Panel.offsetWidth;
   Tutorial_Panel.classList.add('Slide_Up_Animation');
-
-
-}
-
-
-function Close_Side_Bar(){
-  var Slide_Menu = document.getElementById('Sidebar');
-  Slide_Menu_Style = window.getComputedStyle(Slide_Menu);
-  Slide_Menu_Position = String(Slide_Menu_Style.getPropertyValue('left'));  
-  if(Slide_Menu_Position == "0px"){
-      Open_Menu();
-  }  
 }
 
 
