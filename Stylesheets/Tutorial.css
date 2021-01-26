@@ -6,7 +6,7 @@
 #Tutorial_Modal_Background{
   position: absolute;
   top: 0%;
-  left: 100vw;
+  left: 100%;
   height: 100vh;
   width: max(200px,35vh);
   z-index: 20;
@@ -48,11 +48,12 @@
   transform: scale(1.05);
   transform: scale(1.05);
   background-position: 0% 0%;
+  cursor: pointer;
 }
 
 #Card_Wrapper{
   display: grid;
-  grid-gap: 2vh;
+  grid-gap: max(10px,2vh);
   grid-template-columns: repeat(2,1fr);
   margin: 4vw;
 }
@@ -118,6 +119,11 @@
   text-align: center;
 }
 
+:root {
+  --Slide_Direction: forwards;
+}
+
+
 .Slide_Up_Animation{
   animation: Slide_Up_Tutorial 0.1s forwards;
   animation-direction: var(--Slide_Direction);
@@ -125,13 +131,10 @@
 }
 
 @keyframes Slide_Up_Tutorial{
-  0%{transform: translateX(0px);}
+  0%{transform: translateX(0);}
   100%{transform: translateX(calc(-1*max(200px,35vh)));}
 }
 
-:root {
-  --Slide_Direction: forwards;
-}
 
 
 
