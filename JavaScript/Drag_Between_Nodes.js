@@ -20,6 +20,9 @@ window.onload = function(){
   document.getElementById('Playing_Surface').addEventListener("click",Close_Panels);
   document.getElementById('Title').addEventListener("click",Close_Panels);
   document.getElementById('LED_Indicator').addEventListener("click",Close_Panels);
+  document.getElementsByClassName('Navigation_Buttons')[0].addEventListener("click",Direct_To_Page);
+  document.getElementsByClassName('Navigation_Buttons')[1].addEventListener("click",Direct_To_Page);
+
   window.addEventListener('resize', Close_Panels);
 
   // document.body.addEventListener("click",Close_Panels);
