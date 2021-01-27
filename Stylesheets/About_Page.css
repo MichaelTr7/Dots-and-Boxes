@@ -58,7 +58,18 @@
   top: 25vw;
   width: 80vw;
   left: calc(50% - 40vw);
-  background-color: white;
+}
+
+.Diagrams{
+  font-family: Nunito;
+  border: 1px solid black;  
+}
+  
+
+.Explanations{
+  font-family: Nunito;
+  color: white;
+  text-align: center;
 }
 
 
