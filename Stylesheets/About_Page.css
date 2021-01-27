@@ -5,9 +5,10 @@
 }
 
 .Banner_Wrapper{
+  grid-row: 1 / span 2;
   position: absolute;
   display: flex;
-  left: calc(45% - 25vw);
+  left: calc(20%);
   align-items: center;
 }
 
@@ -51,8 +52,12 @@
 }
 
 #Gameplay_Tutorial_Grid{
-  height: 20px;
-  width: 20px;
+  display: grid;
+  position: absolute;
+  grid-template-columns: 1fr 1fr;
+  top: 25vw;
+  width: 80vw;
+  left: calc(50% - 40vw);
   background-color: white;
 }
 

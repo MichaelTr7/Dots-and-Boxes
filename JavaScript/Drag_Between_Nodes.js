@@ -564,12 +564,12 @@ function Evaluate_Winner(){
   if(Pink_Total > Blue_Total){
     var Winner = "Pink";
     Winner_Icon.style.background = "linear-gradient(0deg, #EE459A 0%, #F95371 100%)";
-    Winner_Text.innerHTML = "<br>The Winner is <br> Pink";
+    Winner_Text.innerHTML = "<br>The Winner is Pink<br>" + String(Pink_Total) + ":" + String(Blue_Total);
   }
   else{
     var Winner = "Blue";
     Winner_Icon.style.background = "linear-gradient(180deg, #8675F7 0%, #75B1F7 100%)";
-    Winner_Text.innerHTML = "<br>The Winner is <br> Blue";
+    Winner_Text.innerHTML = "<br>The Winner is Blue<br>" + String(Pink_Total) + ":" + String(Blue_Total);
   }
   var Winner_Panel = document.getElementById('Modal_Background');
   Winner_Panel.style.display = "block";
