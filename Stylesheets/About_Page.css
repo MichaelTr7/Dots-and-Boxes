@@ -1,9 +1,54 @@
 
-#Game_Banner{
-  position: absolute;
-  height: auto;
-  width: 50vw;
-  margin-top: 20px;
-  left: calc(50% - 25vw);
-  /* background-color: white; */
+@font-face{
+  font-family: Nunito;
+  src: url('../Fonts/Nunito/Nunito-ExtraBold.ttf');
 }
+
+.Banner_Wrapper{
+  position: absolute;
+  display: flex;
+  left: calc(45% - 25vw);
+  align-items: center;
+}
+
+.Banner_Wrapper > div{
+}
+
+.Banner_Wrapper > div:nth-of-type(1){
+  width: 42vw;
+}
+
+.Banner_Wrapper > div:nth-of-type(2){
+  width: 25vw;
+}
+
+#Game_Banner{
+  height: auto;
+  margin-top: 12px;
+  width: 100%;
+}
+
+#Source_Code_Button{
+  margin-top: 4px;
+  position: relative;
+  height: 20vw;
+  width: 20vw;
+  left: calc(50% - 10vw);
+  background: rgba(255,255,255,0.1);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  border: none;
+  box-shadow: 0.2vw 0.5vw 0.5vw 0.2vw rgba(0,0,0,0.32), inset 0.1vw 0.1vw 0.2vw 0vw rgba(255,255,255,0.5);
+  border-radius: 4vw;
+  font-family: Nunito;
+  color: white;
+  font-size: 3vw;
+  line-height: 6vw;
+}
+
+.Boxes > button > span{
+  font-size: 10vw;
+}
+
+
+
