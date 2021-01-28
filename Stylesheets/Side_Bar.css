@@ -96,7 +96,7 @@
   display: grid;
   grid-template-rows: repeat(3,1fr);
   grid-gap: 1px;
-  position: absolute;
+  position: fixed;
   width: max(5vw,40px);
   height: max(5vw,40px);
   font-size: max(30px,2vw);

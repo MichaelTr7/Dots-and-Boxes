@@ -14,10 +14,11 @@ body{
 }
 
 .Banner_Wrapper{
-  position: absolute;
+  position: fixed;
   display: flex;
   left: calc(18%);
   align-items: center;
+  z-index: 2;
 }
 
 .Banner_Wrapper > div{
@@ -53,6 +54,7 @@ body{
   color: white;
   font-size: 2.5vw;
   line-height: 2.5vw;
+  text-shadow: 0 0.5vw 0.5vw rgba(0,0,0,0.1);
 }
 
 .Boxes > button > span{
@@ -74,30 +76,77 @@ body{
   position: relative;
   font-family: Nunito;
   width: 100%;
-  height: 25vw;
+  height: 28vw;
   background: rgba(255,255,255,0.1);
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
+  border-radius: 4vw;
+  box-shadow: 0.2vw 0.5vw 0.5vw 0.2vw rgba(0,0,0,0.32), inset 0.1vw 0.1vw 0.2vw 0vw rgba(255,255,255,0.5);
+}
+
+#Diagram_1{
+  background-image: url('./Assets/About Card 1.png'); 
+  background-size: 90% auto;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+#Diagram_2{
+  background-image: url('./Assets/About Card 2.png'); 
+  background-size: 44% auto;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+#Diagram_3{
+  background-image: url('./Assets/About Card 3.png'); 
+  background-size: 85% auto;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 
 .Explanations{
+  display: -webkit-flex;
+  display: flex;
   font-family: Nunito;
   color: white;
+  height: 100%;
+  width: 100%:
+  left: 50%;
   text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 3vw;
+  text-shadow: 0 0.5vw 0.5vw rgba(0,0,0,0.1);
 }
 
-
-
 #Wrapper{
-  position: absolute;
+  position: fixed;
   top: 0px;
   left: 0px;
   height: 100%;
   width: 100%;
-  overflow-y: scroll;
+  overflow: scroll;
 }
 
 
+#Open_Menu_Button{
+  margin-top: 28px;
+  margin-left: 18px;
+}
+
+
+/* background-image: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(220,220,220,0.8) 50%);
+background-size: 100% 200%;
+background-position:  0% 0%;
+transition: background-position 0.2s ease-out, transform 0.2s ease-out;
+}
+
+#Open_Menu_Button:hover{
+transform: scale(1.05);
+background-position: 0% 100%;
+}
+ */
 
 
 
