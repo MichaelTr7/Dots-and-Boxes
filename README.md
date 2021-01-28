@@ -2,7 +2,7 @@
 
 [<img src="./Preview Images/Logo Banner.png" width = "450">](https://michaeltr7.github.io/Dots-and-Boxes/)
 
-Web-based mini game based on the classic Dots and Boxes. Written in pure HTML, CSS and JavaScript and without libraries to concretize fundamentals. Mobile touch devices not yet supported.
+Web-based mini game based on the classic Dots and Boxes. Written in pure HTML, CSS and JavaScript and without libraries to concretize fundamentals. Mobile and touch devices not yet supported.
 
 
 <hr>
