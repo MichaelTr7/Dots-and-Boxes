@@ -8,7 +8,6 @@ html{
   height: 100%;
 }
 
-
 body{
   overflow: scroll;
 }
@@ -55,11 +54,50 @@ body{
   font-size: 2.5vw;
   line-height: 2.5vw;
   text-shadow: 0 0.5vw 0.5vw rgba(0,0,0,0.1);
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(251,119,195,1) 50%);
+  background-size: 100% 300%;
+  background-position:  0% 10%;
+  transition: background-position 0.5s, transform 0.2s, border 0.2s;
+  border: 0vw solid rgba(255,255,255,0);
+}
+
+#Source_Code_Button:hover{
+  background-position: 0% 100%;
+  transform: scale(1.05);
+  cursor: pointer;
+  border: 0.4vw solid white;
+}
+
+
+
+:root {
+  --Hover_Direction: forwards;
+}
+
+.Source_Code_Hover{
+  animation: Slide_Fill_Keyframes 0.5s forwards;
+  animation-direction: var(--Hover_Direction);
+  animation-timing-function: ease;
+}
+
+@keyframes Slide_Fill_Keyframes{
+  0%{background-position: 0% 0%; transform: scale(1);}
+  100%{background-position: 0% 100%; transform: scale(1.05);}
 }
 
 .Boxes > button > span{
   font-size: 10vw;
 }
+
+#Button_Zone{
+  margin-top: 4px;
+  position: absolute;
+  height: 20vw;
+  width: 20vw;
+  left: calc(50% - 10vw);
+  border-radius: 4vw;
+}
+
 
 #Gameplay_Tutorial_Grid{
   display: grid;
@@ -135,18 +173,6 @@ body{
   margin-left: 18px;
 }
 
-
-/* background-image: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(220,220,220,0.8) 50%);
-background-size: 100% 200%;
-background-position:  0% 0%;
-transition: background-position 0.2s ease-out, transform 0.2s ease-out;
-}
-
-#Open_Menu_Button:hover{
-transform: scale(1.05);
-background-position: 0% 100%;
-}
- */
 
 
 

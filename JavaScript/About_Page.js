@@ -6,5 +6,5 @@ window.onload = function(){
   document.getElementById('Backdrop').addEventListener("click",Close_Panels);
   document.getElementById('Gameplay_Tutorial_Grid').addEventListener("click",Close_Panels);
   document.getElementById('Game_Banner').addEventListener("click",Close_Panels);
-
 }
+

@@ -1,0 +1,18 @@
+
+// function Source_Button_Hover(){
+//   console.log("Test");
+//   var Github_Link_Button = document.getElementById('Source_Code_Button');
+//   Github_Link_Button.classList.remove('Source_Code_Hover');
+//   void Github_Link_Button.offsetWidth;
+// 
+//   var Root = document.querySelector(':root');
+//   var Direction = String(getComputedStyle(Root).getPropertyValue('--Hover_Direction'));
+//   if(Direction == "forwards"){
+//     Root.style.setProperty('--Hover_Direction','reverse');
+//     Github_Link_Button.classList.add('Source_Code_Hover');
+//   }
+//   else{
+//     Root.style.setProperty('--Hover_Direction','forwards');
+//     Github_Link_Button.classList.add('Source_Code_Hover');
+//   }
+// }
