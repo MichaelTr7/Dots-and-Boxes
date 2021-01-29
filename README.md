@@ -8,3 +8,5 @@ Web-based mini game based on the classic Dots and Boxes. Written in pure HTML, C
 <hr>
 
 [<img src="./Preview Images/Dots and Boxes Game Preview.png" width = "1000">](https://michaeltr7.github.io/Dots-and-Boxes/)
+
+[<img src="./Preview Images/How To Play Page.png" width = "1000">](https://michaeltr7.github.io/Dots-and-Boxes/)
